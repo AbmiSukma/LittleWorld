@@ -1,0 +1,117 @@
+/* Fixed at bottom center of viewport */
+.global-nav {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* The black pill container */
+.nav-pill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 6px 8px;
+  background: #111;
+  border-radius: 999px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Each nav item – relative for tooltip positioning */
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* The clickable link */
+.nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  min-width: 36px;
+  min-height: 36px;
+  transition: background 0.15s ease;
+  overflow: hidden;
+}
+
+.nav-link:hover:not(.nav-link--active) {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* The animated active bubble (sits behind icon+label via z-index) */
+.nav-active-bg {
+  position: absolute;
+  inset: 0;
+  background: #2a2a2a;
+  border-radius: 999px;
+  z-index: 0;
+}
+
+/* Icon – always visible */
+.nav-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* Label – shown only for active item, animated in/out */
+.nav-label {
+  position: relative;
+  z-index: 1;
+  font-family: 'Odibee Sans', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* Tooltip below hovered (non-active) item */
+.nav-tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #111;
+  font-family: 'Odibee Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  z-index: 999;
+}
+
+/* Small notch/arrow pointing up on the tooltip */
+.nav-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fff;
+}

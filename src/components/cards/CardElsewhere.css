@@ -1,0 +1,293 @@
+:root {
+  --home-loyalty-paper-bg: #fbf7ef;
+  --home-loyalty-paper-shadow: #d8d0c4;
+  --home-loyalty-ink: #11197f;
+  --home-loyalty-accent: #11197f;
+  --home-loyalty-stamp-bg: #11197f;
+  --card-width: 280px; /* Matches CardProfile / CardJob */
+  --card-height: 420px; /* Matches CardProfile / CardJob */
+  --card-corner-radius: 12px;
+  --card-outline-thickness: 0.5px;
+  --color-3: rgba(0, 0, 0, 0.5);
+}
+
+.card-elsewhere {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  border-radius: var(--card-corner-radius);
+  /* The motion div wraps the actual face */
+  flex-shrink: 0; /* Prevent it from squishing in flex containers */
+  transform-style: preserve-3d;
+}
+
+/* Base Card Face */
+.dom-card__face {
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  border: var(--card-outline-thickness) solid var(--color-3);
+  border-radius: inherit;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background: var(--home-loyalty-paper-bg);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.dom-card__safe-area {
+  position: absolute;
+  inset: 8px; /* Simulated safe margin */
+  border: var(--card-outline-thickness) solid var(--color-3);
+  border-radius: 4px; /* inner radius */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header & Controls */
+.dom-card__index-panel {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.dom-card__control-chip {
+  background: transparent;
+  border: 1px solid var(--color-3);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-3);
+  cursor: pointer;
+  padding: 0;
+}
+.dom-card__control-chip:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.dom-card__chrome {
+  display: flex;
+  gap: 4px;
+}
+
+.dom-card__index-header {
+  padding: 12px 16px 0;
+  border-bottom: 1px solid var(--home-loyalty-paper-shadow);
+  display: flex;
+  justify-content: center;
+}
+
+.dom-card__index-title {
+  font-family: 'Reddit Sans', sans-serif;
+  font-weight: 900;
+  color: var(--home-loyalty-ink);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Body & Lines */
+.dom-card__index-body {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dom-card__index-holes {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  border-left: 2px dashed var(--home-loyalty-paper-shadow);
+  border-right: 2px dashed var(--home-loyalty-paper-shadow);
+  opacity: 0.5;
+}
+
+.dom-card__index-lines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 23px,
+    var(--home-loyalty-paper-shadow) 23px,
+    var(--home-loyalty-paper-shadow) 24px
+  );
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.dom-card__index-content {
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-left: 32px; /* Avoid holes */
+}
+
+/* Grid & Layout */
+.social-loyalty-card {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.social-loyalty-card__paper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Automatically distribute space between grid and copy */
+}
+
+.social-loyalty-card__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  aspect-ratio: 1; /* Roughly square */
+}
+
+.social-loyalty-card__cell {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px dashed var(--home-loyalty-paper-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.social-loyalty-card__cell--empty {
+  border-color: rgba(17, 25, 127, 0.2);
+}
+
+.social-loyalty-card__stamp {
+  border: none;
+  cursor: pointer;
+  color: var(--home-loyalty-ink);
+  transition: transform 0.2s ease;
+}
+
+.social-loyalty-card__stamp:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.social-loyalty-card__stamp-mark {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-loyalty-card__stamp-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--home-loyalty-ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-loyalty-card__stamp-ring::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--home-loyalty-ink);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.social-loyalty-card__stamp-ring-text {
+  position: absolute;
+  inset: -2px; /* Slightly larger than ring */
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  fill: var(--home-loyalty-ink);
+  font-family: 'Reddit Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.social-loyalty-card__stamp-center {
+  position: relative;
+  z-index: 2;
+  width: 40%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-loyalty-card__icon {
+  width: 100%;
+  height: 100%;
+  fill: var(--home-loyalty-ink);
+}
+
+/* Footer text */
+.social-loyalty-card__copy {
+  position: relative;
+  place-self: start start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: .08rem;
+  width: min(7.25rem, 100%); /* scaled down from 8.95rem */
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  color: var(--home-loyalty-ink);
+  transform: rotate(90deg) translateY(-100%);
+  transform-origin: top left;
+  /* margin-top removed to rely on space-between */
+}
+
+.social-loyalty-card__title {
+  font-family: 'Reddit Sans', sans-serif;
+  font-size: 2.1rem; /* scaled down from 2.6rem */
+  margin-top: 0;
+  margin-bottom: 3.2rem; /* scaled down from 4rem */
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: left;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--home-loyalty-ink);
+}
+
+.social-loyalty-card__fine-print {
+  width: min(7.2rem, 100%); /* scaled down from 8.9rem */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(.65rem, 1.3vw, .65rem); /* scaled down from .8rem */
+  font-weight: 400;
+  line-height: 1.2;
+  opacity: .5;
+  color: var(--home-loyalty-ink);
+  margin: 0;
+}
+
+/* Different rotations for stamps to look organic */
+.social-loyalty-card__stamp--linkedin .social-loyalty-card__stamp-mark { transform: rotate(-5deg); }
+.social-loyalty-card__stamp--instagram .social-loyalty-card__stamp-mark { transform: rotate(8deg); }
+.social-loyalty-card__stamp--github .social-loyalty-card__stamp-mark { transform: rotate(-3deg); }
+.social-loyalty-card__stamp--itch .social-loyalty-card__stamp-mark { transform: rotate(12deg); }
+
+

@@ -1,0 +1,44 @@
+:root {
+  font-family: 'Odibee Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Default transitions for time engine */
+  transition: background-color 2s ease, color 2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--sky-top, #4ca1af); /* Fallback */
+  color: var(--text-primary, #2c3e50);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Base styles for standard pages */
+.page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 20px;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

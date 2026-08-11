@@ -1,0 +1,129 @@
+/* ========================================================
+   CardJob — same height as other Row 1 cards (420px)
+   ======================================================== */
+
+.card-job {
+  position: relative;
+  width: 280px;
+  height: 420px; /* FIXED — matches CardProfile & CardElsewhere */
+
+  background: #f1efed; /* Light greyish beige background from image */
+  border: 3px solid #bcaba8; /* Thick outer border */
+  border-radius: 12px;
+  
+  padding: 6px; /* Space for the inner border */
+
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+
+  box-shadow:
+    4px 6px 20px rgba(0, 0, 0, 0.18),
+    1px 2px 4px rgba(0, 0, 0, 0.08);
+
+  cursor: pointer;
+  transform-origin: center;
+}
+
+.card-job-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #bcaba8; /* Thin inner border */
+  border-radius: 8px;
+}
+
+/* =====================================================
+   BUTTONS (Left side)
+   ===================================================== */
+.job-buttons {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes buttons to top and bottom */
+}
+
+.job-btn {
+  background: #000000;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+  
+  writing-mode: vertical-rl; /* Text runs top-to-bottom */
+  padding: 16px 8px; /* 16px top/bottom padding, 8px left/right */
+  border-radius: 20px; /* Pill shape */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.job-btn:hover {
+  background: #333333;
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   NAME + TITLE (Center/Right)
+   ===================================================== */
+
+.job-name-container {
+  position: absolute;
+  top: 50%;
+  left: 55%; /* Position slightly to the right */
+  transform: translate(-50%, -50%);
+  
+  display: flex;
+  flex-direction: column; /* Lays out right-to-left in vertical-rl */
+  align-items: center; /* Aligns to center (top-to-bottom) */
+  gap: 6px;
+  writing-mode: vertical-rl; /* Reads top to bottom */
+}
+
+.job-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #4a302f; /* Dark brown */
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.job-title-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #969188; /* Light greyish brown */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 600px) {
+  .card-job {
+    width: 240px;
+    height: 370px;
+  }
+  .job-name {
+    font-size: 1.5rem;
+  }
+  .job-title-tag {
+    font-size: 0.55rem;
+  }
+  .job-btn {
+    font-size: 10px;
+    padding: 14px 6px;
+  }
+}

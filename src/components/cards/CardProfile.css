@@ -1,0 +1,116 @@
+.card-profile {
+  position: relative;
+  width: 280px;
+  height: 420px; /* FIXED — matches all other cards */
+  
+  /* Match CardJob padding & borders */
+  background: #f1efed;
+  border: 3px solid #bcaba8;
+  border-radius: 12px;
+  padding: 6px;
+  
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 8px 24px rgba(0,0,0,0.20), 1px 2px 6px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.card-profile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid #bcaba8;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+}
+
+.profile-image-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f0; /* Fallback */
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-art-credit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  padding: 6px 10px;
+  border-bottom-right-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 500;
+  z-index: 2;
+}
+
+.profile-bio {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #fff;
+  line-height: 1.5;
+  letter-spacing: 0px;
+  
+  /* Thick black stroke/shadow to make text readable over any image */
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000,
+     0px  2px 4px rgba(0,0,0,0.7);
+     
+  z-index: 2;
+  margin: 0;
+}
+
+.profile-footer-bar {
+  background: #000;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.profile-footer-name {
+  font-family: 'Reddit Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.profile-footer-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #aaa;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .card-profile {
+    width: 240px;
+    height: 370px;
+  }
+}

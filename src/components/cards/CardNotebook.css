@@ -1,0 +1,197 @@
+/* CardNotebook.css - Repurposed as a 2D Flat Indie Employee ID Badge */
+.card-id-badge {
+  position: relative;
+  width: 280px;
+  height: 420px;
+  flex-shrink: 0;
+  transform-style: preserve-3d;
+}
+
+.card-id-badge .dom-card__frame,
+.card-id-badge .dom-card__face-stack,
+.card-id-badge .dom-card__face {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.card-id-badge .dom-card__face {
+  background: #fdfdfd;
+  border: 3px solid #222;
+  box-shadow: 5px 6px 0px rgba(34, 34, 34, 1); /* Hard flat shadow for indie feel */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 16px;
+}
+
+/* Simulated Lanyard Cutout */
+.id-badge-hole {
+  width: 60px;
+  height: 14px;
+  background: #222;
+  border-radius: 12px;
+  margin: 4px auto 16px auto;
+  flex-shrink: 0;
+}
+
+/* Header */
+.id-badge-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid #222;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.id-badge-logo {
+  width: 48px;
+  height: 48px;
+  background: #f0f0f0;
+  border: 2.5px solid #222;
+  border-radius: 10px; /* Slightly rounded square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.id-badge-logo svg, .id-badge-logo img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-notebook__emoji-icon {
+  font-size: 26px;
+}
+
+.id-badge-brand {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.id-badge-company {
+  font-family: 'Odibee Sans', sans-serif;
+  font-size: 20px;
+  color: #222;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.id-badge-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+/* Body */
+.id-badge-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.id-badge-title {
+  font-family: 'Reddit Sans', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: #0042d7; /* Highlight color for title */
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.id-badge-desc {
+  font-family: 'Reddit Sans', sans-serif;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.4;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Metadata Grid */
+.id-badge-meta {
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px solid #222;
+  border-bottom: 2px solid #222;
+  padding: 8px 0;
+  margin-bottom: 12px;
+}
+
+.meta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.meta-box:last-child {
+  align-items: flex-end;
+}
+
+.meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #666;
+}
+
+.meta-value {
+  font-family: 'Reddit Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #222;
+}
+
+.meta-active {
+  color: #009944; /* Green status */
+}
+
+/* Barcode */
+.id-badge-barcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 6px;
+}
+
+.barcode-bars {
+  width: 100%;
+  height: 36px;
+  /* Flat CSS barcode */
+  background-image: repeating-linear-gradient(
+    to right,
+    #222,
+    #222 3px,
+    transparent 3px,
+    transparent 6px,
+    #222 6px,
+    #222 8px,
+    transparent 8px,
+    transparent 11px,
+    #222 11px,
+    #222 17px,
+    transparent 17px,
+    transparent 19px,
+    #222 19px,
+    #222 22px,
+    transparent 22px,
+    transparent 26px
+  );
+  border-radius: 2px;
+}
+
+.barcode-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #222;
+  letter-spacing: 2px;
+}

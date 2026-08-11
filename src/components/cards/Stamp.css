@@ -1,0 +1,43 @@
+.stamp-container {
+  display: inline-block;
+  padding: 4px;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+.stamp-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  color: #333;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.02);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.stamp-container:hover .stamp-inner {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Different tint for different types of stamps */
+.stamp-github .stamp-inner {
+  border-color: rgba(36, 41, 46, 0.4);
+}
+.stamp-route .stamp-inner {
+  border-color: rgba(41, 128, 185, 0.4);
+}
+.stamp-document .stamp-inner {
+  border-color: rgba(39, 174, 96, 0.4);
+}
+.stamp-figma .stamp-inner {
+  border-color: rgba(242, 78, 30, 0.4);
+}

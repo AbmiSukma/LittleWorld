@@ -1,0 +1,166 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+  transition: background 2s ease;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-celestial {
+  position: absolute;
+  top: 30%;
+  width: 100px;
+  height: 100px;
+  transition: opacity 2s ease, transform 3s ease-in-out, left 3s ease-in-out;
+  filter: drop-shadow(0 0 20px var(--light));
+}
+
+/* Celestial Body Time States */
+.hero-celestial.fajar {
+  left: 15%;
+  transform: translateY(30vh);
+  opacity: 0;
+}
+
+.hero-celestial.sunrise {
+  left: 15%;
+  transform: translateY(15vh);
+  opacity: 1;
+}
+
+.hero-celestial.daylight {
+  left: 50%;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-celestial.sunset {
+  left: 80%;
+  transform: translateY(15vh);
+  opacity: 1;
+}
+
+.hero-celestial.evening {
+  left: 50%;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-celestial.night {
+  left: 80%;
+  transform: translateY(10vh);
+  opacity: 1;
+}
+
+.hero-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+}
+
+.hero-mountains svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-mountains path {
+  transition: fill 2s ease;
+}
+
+.hero-wind-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes wind-blow {
+  from { transform: translateX(-10%); }
+  to { transform: translateX(100%); }
+}
+
+.wind-line {
+  stroke-dasharray: 200 400;
+  animation: wind-blow 15s linear infinite;
+}
+
+.wind-line.delay {
+  animation-duration: 25s;
+  animation-delay: -5s;
+}
+
+.hero-trees {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 5;
+}
+
+.hero-trees svg {
+  width: 100%;
+  height: 100%;
+  margin-bottom: -5px;
+}
+
+/* Foreground Content */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-title-container {
+  text-align: center;
+  color: #efe8e8;
+}
+
+.hero-title {
+  position: relative;
+  display: inline-block;
+  font-size: 8rem;
+  line-height: 1;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  letter-spacing: 8px;
+  margin: 0;
+}
+
+.hero-location-time {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  text-align: right;
+  color: #efe8e8;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wind-line {
+    animation: none !important;
+  }
+}

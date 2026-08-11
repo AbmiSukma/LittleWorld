@@ -1,0 +1,84 @@
+.waterfall-section {
+  position: relative;
+  width: 100%;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cliff-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 3;
+}
+
+.cliff-edge path {
+  transition: fill 2s ease;
+}
+
+.cave-void {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* The color of the cave void is slightly darker than the terrain/dirt */
+  background: linear-gradient(to bottom, var(--terrain-base), #1a1a1a);
+  z-index: 1;
+}
+
+.waterfall-pillar {
+  position: absolute;
+  top: 50px;
+  width: 400px; /* Width of the waterfall stream */
+  height: 100%;
+  background-color: rgba(52, 152, 219, 0.6); /* Translucent blue */
+  z-index: 2;
+  overflow: hidden;
+}
+
+.splash-layer {
+  width: 100%;
+  height: 100%;
+}
+
+.splash-layer svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fall-down {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.splash-shape {
+  animation: fall-down 4s linear infinite;
+  transform-origin: center;
+}
+
+.splash-shape.delay-1 {
+  animation-delay: -1s;
+}
+
+.splash-shape.delay-2 {
+  animation-delay: -2s;
+  animation-duration: 3s;
+}
+
+.splash-shape.delay-3 {
+  animation-delay: -3.5s;
+  animation-duration: 5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-shape {
+    animation: none !important;
+  }
+}
