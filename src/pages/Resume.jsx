@@ -79,7 +79,7 @@ const Resume = () => {
         {/* Right Content Area */}
         <main className="resume-content">
           <section className="resume-header">
-            <h1 className="resume-name">Abmi Sukma</h1>
+            <h1 className="resume-name">Abmi Sukma Edri</h1>
             <h2 className="resume-title">UI/UX Designer</h2>
             <p className="resume-location">Pekanbaru, Riau, Indonesia</p>
 
@@ -90,15 +90,15 @@ const Resume = () => {
               </div>
               <div className="contact-item">
                 <span className="contact-label">Email</span>
-                <a href="mailto:abmigrande@gmail.com" className="contact-value">abmigrande@gmail.com</a>
+                <a href="mailto:abmisukma.e@gmail.com" className="contact-value">abmisukma.e@gmail.com</a>
               </div>
               <div className="contact-item">
                 <span className="contact-label">Website</span>
-                <a href="https://amey.vercel.app" className="contact-value" target="_blank" rel="noopener noreferrer">amey.com</a>
+                <a href="https://herlittleworld-pb5i51a0u-abmisukmas-projects.vercel.app/" className="contact-value" target="_blank" rel="noopener noreferrer">ameyco.vercel.app</a>
               </div>
               <div className="contact-item">
                 <span className="contact-label">LinkedIn</span>
-                <a href="https://linkedin.com/in/abmi-sukma-1948ab250" className="contact-value" target="_blank" rel="noopener noreferrer">linkedin.com/in/abmi-sukma-1948ab250</a>
+                <a href="https://linkedin.com/in/ameyco" className="contact-value" target="_blank" rel="noopener noreferrer">linkedin.com/in/ameyco</a>
               </div>
               <div className="contact-item">
                 <span className="contact-label">Github</span>
@@ -116,13 +116,13 @@ const Resume = () => {
 
           <section id="core-skills" className="resume-section">
             <h3 className="resume-section-title">Core Skills & Themes</h3>
-            <p>Data Analysis | Interaction Design | UX Research | User-Centered Design (UCD) | Wireframing & Prototyping | Usability Testing | Figma</p>
+            <p>Interaction Design | UX Research | User-Centered Design (UCD) | Wireframing & Prototyping | Usability Testing | Data Analysis</p>
           </section>
 
           <section id="career-highlights" className="resume-section">
             <h3 className="resume-section-title">Career Highlights</h3>
             <ul>
-              <li>Achieved a System Usability Scale (SUS) score of 72.0, indicating good overall usability for the MajorPath decision-support design.</li>
+              <li>Achieved a System Usability Scale (SUS) score of 72.0, indicating good overall usability for the MajorPath decision support design.</li>
               <li>Designed and evaluated MajorPath to help Indonesian high school students identify suitable university majors based on their interests, learning preferences, and career aspirations.</li>
               <li>Created an integrated academic administration and service dashboard ("Dashboard TIF") for the Informatics Engineering department during a collaborative internship.</li>
             </ul>
