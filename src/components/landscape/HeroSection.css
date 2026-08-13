@@ -9,100 +9,70 @@
   background-color: var(--sky-bottom);
 }
 
-/* --- MAIN CONTAINER --- */
-#landscape-wrapper {
+/* Penempatan dan Latar Belakang Utama */
+.landscape-wrapper {
   position: absolute;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+  height: 100vh; /* Sesuaikan dengan kebutuhan */
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 50%, var(--sky-bottom) 100%);
   overflow: hidden;
 }
 
-/* --- SKY & CLOUDS --- */
+/* Langit, Bulan, Awan */
 .sky {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; width: 100%; height: 60%;
 }
-
 .moon {
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  /* Use shadow trick for crescent moon during night/fajar, otherwise full sun */
+  position: absolute; top: 15%; left: 15%; width: 40px; height: 40px;
+  background: radial-gradient(circle at center, var(--light) 40%, rgba(255, 255, 255, 0) 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 40% 50%, 0% 100%);
 }
 
-/* If night, fajar, or evening: show crescent via box-shadow */
-.hero-section.night .moon, 
-.hero-section.fajar .moon, 
-.hero-section.evening .moon {
-  box-shadow: -10px 10px 0 0 var(--light); 
-  background: transparent;
-}
-
-/* If daylight or sunrise: show full circle (sun) */
-.hero-section.daylight .moon, 
+.hero-section.daylight .moon,
 .hero-section.sunrise .moon {
-  box-shadow: none;
+  clip-path: none;
+  border-radius: 50%;
   background: var(--light);
 }
 
 .cloud {
-  position: absolute;
-  background: var(--cloud-color);
-  border-radius: 10px;
+  position: absolute; background: var(--cloud-color);
+  clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
   animation: floatCloud 20s linear infinite;
 }
-.cloud-1 { top: 20%; left: -20%; width: 150px; height: 30px; clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%); animation-duration: 45s; }
-.cloud-2 { top: 10%; left: -30%; width: 200px; height: 40px; clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0% 50%); animation-duration: 35s; animation-delay: 5s; }
-.cloud-3 { top: 35%; left: -15%; width: 120px; height: 25px; clip-path: polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0% 50%); animation-duration: 25s; animation-delay: 2s; }
+.cloud-1 { top: 20%; left: 35%; width: 150px; height: 35px; animation-duration: 45s; }
+.cloud-2 { top: 10%; left: 60%; width: 200px; height: 45px; animation-duration: 35s; animation-delay: 5s; }
 
 @keyframes floatCloud {
-  0% { transform: translateX(-10vw); }
+  0% { transform: translateX(-20vw); }
   100% { transform: translateX(120vw); }
 }
 
-/* --- MOUNTAINS --- */
-.mountains {
+/* Gunung - Bentuk dan Warna */
+.mountain-layer {
   position: absolute;
   bottom: 20%;
   width: 100%;
   height: 60%;
 }
 .mountain {
-  position: absolute;
-  bottom: 0;
+  position: absolute; bottom: 0;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   transition: background-color 1s ease-in-out;
 }
-.m-center {
-  left: 25%;
-  width: 50%;
-  height: 90%;
-  background: var(--mountain-front);
-  z-index: 2;
-}
-.m-left {
-  left: -5%;
-  width: 45%;
-  height: 60%;
-  background: var(--mountain-back);
-  z-index: 1;
-}
-.m-right {
-  left: 55%;
-  width: 55%;
-  height: 55%;
-  background: var(--mountain-back);
-  z-index: 1;
-}
+.mt-back { background: var(--mountain-back); }
+.mt-mid { background: var(--mountain-front); }
 
-/* --- HILLS / GROUND --- */
-.hills {
+/* Penempatan Gunung - 5 Buah */
+.mt-1 { left: -10%; width: 50%; height: 75%; z-index: 0; } /* Belakang Kiri */
+.mt-2 { left: 25%; width: 50%; height: 95%; z-index: 0; } /* Belakang Tengah */
+.mt-3 { left: 60%; width: 50%; height: 70%; z-index: 0; } /* Belakang Kanan */
+.mt-4 { left: 15%; width: 25%; height: 60%; z-index: 1;} /* Tengah Kiri-Tengah */
+.mt-5 { left: 65%; width: 25%; height: 55%; z-index: 1;} /* Tengah Tengah-Kanan */
+
+/* Bukit - Bentuk dan Warna */
+.hill-layer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -110,119 +80,94 @@
   z-index: 3;
 }
 .hill {
-  position: absolute;
-  bottom: 0;
-  background: var(--hill-color);
-  border-radius: 100% 100% 0 0; /* Smooth curving hills */
+  position: absolute; bottom: 0;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   transition: background-color 1s ease-in-out;
 }
-.hill-left { left: -10%; width: 60%; height: 80%; background: var(--ground-color); }
-.hill-right { right: -10%; width: 70%; height: 60%; }
-.hill-center { left: 15%; width: 70%; height: 95%; background: var(--ground-color); border-radius: 50% 50% 0 0; }
+.hill-dark { background: var(--hill-color); }
 
-/* --- TREES --- */
-.foreground {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
-  pointer-events: none;
+/* Penempatan Bukit - 3 Buah */
+.hill-1 { left: -10%; width: 60%; height: 35%; z-index: 2; } /* Kiri */
+.hill-2 { left: 20%; width: 60%; height: 45%; z-index: 2; } /* Tengah */
+.hill-3 { left: 50%; width: 60%; height: 40%; z-index: 2; } /* Kanan */
+
+/* Perkemahan */
+.campsite {
+  position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; /* Untuk mengabaikan klik */
+  z-index: 3;
 }
+
+/* Pohon - Bentuk, Warna, dan Penempatan (5 buah) */
 .tree {
-  position: absolute;
-  bottom: 0;
-  background: var(--tree-color);
+  position: absolute; bottom: 0; background: var(--tree-color);
   clip-path: polygon(50% 0%, 20% 100%, 80% 100%);
   transition: background-color 1s ease-in-out;
 }
-.tree-1 { left: 8%; width: 80px; height: 250px; bottom: 5%; }
-.tree-2 { left: 25%; width: 60px; height: 180px; bottom: 15%; }
-.tree-3 { right: 5%; width: 100px; height: 300px; bottom: -5%; }
-.tree-4 { right: 25%; width: 50px; height: 120px; bottom: 25%; }
+.tree-1 { left: 10%; width: 100px; height: 300px; bottom: 5%;} /* Kiri 1 */
+.tree-2 { left: 28%; width: 70px; height: 220px; bottom: 18%;} /* Kiri 2 */
+.tree-3 { left: 42%; width: 80px; height: 180px; bottom: 25%;} /* Kiri 3 (dekat tenda) */
+.tree-4 { left: 75%; width: 80px; height: 220px; bottom: 15%;} /* Kanan 1 */
+.tree-5 { left: 90%; width: 90px; height: 300px; bottom: 10%;} /* Kanan 2 */
 
-/* --- TENT --- */
+/* Tenda - Bentuk, Warna, Penempatan */
 .tent {
-  position: absolute;
-  bottom: 22%;
-  left: 45%;
-  width: 120px;
-  height: 160px;
+  position: absolute; bottom: 25%; left: 48%;
+  width: 120px; height: 160px;
 }
 .tent-left {
-  position: absolute;
-  bottom: 0; left: 10%;
-  width: 45%; height: 100%;
-  background: var(--tent-light);
-  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  position: absolute; bottom: 0; left: 0; width: 50%; height: 100%;
+  background: var(--tent-light); clip-path: polygon(100% 0, 0 100%, 100% 100%);
   transition: background-color 1s ease-in-out;
 }
 .tent-right {
-  position: absolute;
-  bottom: 0; right: 10%;
-  width: 45%; height: 100%;
-  background: var(--tent-dark);
-  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  position: absolute; bottom: 0; left: 50%; width: 50%; height: 100%;
+  background: var(--tent-dark); clip-path: polygon(0 0, 0 100%, 100% 100%);
   transition: background-color 1s ease-in-out;
 }
 .tent-door {
-  position: absolute;
-  bottom: 0; left: 40%;
-  width: 20%; height: 40%;
-  background: var(--tent-inside);
-  clip-path: polygon(50% 0, 0 100%, 100% 100%);
-  transition: background-color 1s ease-in-out;
-}
-.tent-flag {
-  position: absolute;
-  top: -15px; left: 50%;
-  width: 30px; height: 15px;
-  background: var(--tent-flag);
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  position: absolute; bottom: 0; left: 40%; width: 20%; height: 40%;
+  background: var(--tent-inside); clip-path: polygon(50% 0, 0 100%, 100% 100%);
   transition: background-color 1s ease-in-out;
 }
 .tent-pole {
-  position: absolute;
-  top: -20px; left: 49%;
-  width: 2%; height: 20px;
+  position: absolute; top: -15px; left: 49%; width: 2%; height: 15px;
   background: #333;
 }
+.tent-flag {
+  position: absolute; top: -15px; left: 51%; width: 20px; height: 10px;
+  background: var(--tent-flag); clip-path: polygon(0 0, 100% 50%, 0 100%);
+  transition: background-color 1s ease-in-out;
+}
 
-/* --- FIREPLACE --- */
-.fireplace {
-  position: absolute;
-  bottom: 18%;
-  left: 65%;
-  width: 60px;
-  height: 60px;
+/* Api Unggun */
+.campfire {
+  position: absolute; bottom: 20%; left: 66%;
+  width: 60px; height: 60px;
 }
-.fire-glow {
-  position: absolute;
-  bottom: -20px; left: -40px;
-  width: 140px; height: 140px;
-  background: radial-gradient(circle, var(--fire-glow) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: flicker 2s infinite alternate;
+.logs {
+  position: absolute; bottom: 0; left: 5px; width: 50px; height: 15px;
+  background: #2e1c10; border-radius: 5px;
 }
-.fire {
-  position: absolute;
-  bottom: 10px; left: 20px;
-  width: 20px; height: 20px;
-  background: var(--fire-orange);
-  transform: rotate(45deg);
+.logs-1 { transform: rotate(20deg); }
+.logs-2 { transform: rotate(-20deg); left: 10px; }
+
+.flame {
+  position: absolute; bottom: 10px; left: 15px; width: 30px; height: 30px;
+  background: var(--fire-orange); transform: rotate(45deg);
+  box-shadow: 0 0 20px 5px var(--fire-glow);
   animation: fire-flicker 1.5s infinite alternate;
 }
-.fire-2 { background: var(--fire-yellow); bottom: 15px; left: 25px; width: 15px; height: 15px; animation-delay: 0.2s; }
-.fire-3 { background: var(--fire-yellow); bottom: 12px; left: 15px; width: 12px; height: 12px; animation-delay: 0.4s; }
-.log {
-  position: absolute;
-  bottom: 0; left: 10px;
-  width: 40px; height: 10px;
-  background: #2a1e16;
-  border-radius: 5px;
+.flame-inner {
+  position: absolute; bottom: 15px; left: 20px; width: 20px; height: 20px;
+  background: var(--fire-yellow); transform: rotate(45deg);
+  animation: fire-flicker 1.2s infinite alternate;
 }
-.log-1 { transform: rotate(15deg); }
-.log-2 { transform: rotate(-15deg); }
+
+@keyframes fire-flicker {
+  0% { transform: rotate(45deg) scale(0.9); }
+  100% { transform: rotate(45deg) scale(1.1) translateY(-5px); }
+}
 
 /* Smoke */
 .smoke {
@@ -248,40 +193,27 @@
 }
 
 /* Day light hides fire */
-.hero-section.daylight .fire,
-.hero-section.daylight .fire-glow,
+.hero-section.daylight .flame,
+.hero-section.daylight .flame-inner,
 .hero-section.daylight .smoke {
   display: none;
 }
 
-/* Animations */
-@keyframes flicker {
-  0% { opacity: 0.8; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1.05); }
+/* UI Api Unggun (Burung) */
+.birds {
+  position: absolute; top: 38%; right: 18%; width: 40px; height: 20px;
 }
-@keyframes fire-flicker {
-  0% { transform: rotate(45deg) scale(0.9); }
-  100% { transform: rotate(45deg) scale(1.1) translateY(-5px); }
+.bird {
+  position: absolute; width: 12px; height: 8px; background: var(--tree-color);
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  animation: float-bird 2s ease-in-out infinite alternate;
 }
+.bird-1 { left: 0; animation-delay: 0.2s; }
+.bird-2 { right: 0; top: 5px;}
 
-/* Wind Lines */
-.hero-wind-layer {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-}
-.wind-line {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: wind-blow 6s linear infinite;
-}
-.wind-line.delay {
-  animation-delay: 3s;
-}
-@keyframes wind-blow {
-  0% { stroke-dashoffset: 600; }
-  100% { stroke-dashoffset: -600; }
+@keyframes float-bird {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-5px); }
 }
 
 /* --- TEXT & CONTENT OVERLAY --- */
@@ -292,7 +224,6 @@
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   pointer-events: none; /* Let clicks pass through to background if necessary, though nothing is clickable here */
@@ -347,7 +278,7 @@
   .tent {
     left: 20%;
   }
-  .fireplace {
+  .campfire {
     left: 70%;
   }
 }
