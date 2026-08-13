@@ -7,8 +7,10 @@
   z-index: 1;
   overflow: hidden;
   background-color: var(--sky-bottom);
-  
-  /* BASE SVG COLORS (Night / Default) */
+}
+
+/* Base colors for SVG */
+.hero-section {
   --svg-m-back-left: var(--mountain-back);
   --svg-m-back-right: var(--mountain-back);
   --svg-m-mid-left: var(--mountain-front);
@@ -35,78 +37,91 @@
 }
 
 /* --- DYNAMIC LIGHTING / SHADOWS --- */
-/* Fajar / Sunrise: Light from Left */
 .hero-section.fajar, .hero-section.sunrise {
   --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 85%, white);
   --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 85%, black);
-  
   --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 85%, white);
   --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 85%, black);
-  --svg-m-mid-center: var(--mountain-front);
-
   --svg-hill-left: color-mix(in srgb, var(--terrain-base) 90%, white);
   --svg-hill-right: color-mix(in srgb, var(--terrain-base) 90%, black);
-
   --svg-tent-main: color-mix(in srgb, #9E8CB6 85%, white);
   --svg-tent-shadow: color-mix(in srgb, #8C79A6 85%, black);
 }
-
-/* Sun Overhead (Daylight) */
 .hero-section.daylight {
   --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 95%, white);
   --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 95%, white);
-  
   --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 95%, white);
   --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 95%, white);
-  --svg-m-mid-center: color-mix(in srgb, var(--mountain-front) 95%, white);
-
-  --svg-hill-left: var(--terrain-base);
-  --svg-hill-right: var(--terrain-base);
-
-  --svg-tent-main: #9E8CB6;
-  --svg-tent-shadow: #9E8CB6;
 }
-
-/* Sun on the Right (Sunset, Evening) */
 .hero-section.sunset, .hero-section.evening {
   --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 85%, black);
   --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 85%, white);
-  
   --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 85%, black);
   --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 85%, white);
-  --svg-m-mid-center: var(--mountain-front);
-  
   --svg-hill-left: color-mix(in srgb, var(--terrain-base) 90%, black);
   --svg-hill-right: color-mix(in srgb, var(--terrain-base) 90%, white);
-
   --svg-tent-main: color-mix(in srgb, #9E8CB6 85%, black); 
   --svg-tent-shadow: color-mix(in srgb, #8C79A6 85%, white);
 }
-
-/* Night defaults to base colors above, but maybe slightly darker right faces to mimic faint moonlight from left */
 .hero-section.night {
-  --svg-m-back-left: var(--mountain-back);
   --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 95%, black);
-  
-  --svg-m-mid-left: var(--mountain-front);
   --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 95%, black);
-
-  --svg-hill-left: var(--terrain-base);
   --svg-hill-right: color-mix(in srgb, var(--terrain-base) 95%, black);
 }
 
-/* Transitions for SVG variables */
 .hero-section * {
   transition: fill 2s ease, stroke 2s ease;
 }
 
-/* --- MAIN CONTAINER --- */
-.hero-svg-container {
+/* =========================================
+   LAYER 1: BACKGROUND (SKY & CELESTIAL)
+   ========================================= */
+.layer-background {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; width: 100%; height: 100%;
   background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
-  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-celestial {
+  position: absolute;
+  top: 15%;
+  width: 80px;
+  height: 80px;
+  transition: opacity 2s ease, transform 3s ease-in-out, left 3s ease-in-out;
+}
+
+.hero-celestial.fajar { left: 15%; transform: translateY(30vh); opacity: 0; }
+.hero-celestial.sunrise { left: 15%; transform: translateY(15vh); opacity: 1; }
+.hero-celestial.daylight { left: 50%; transform: translateY(0); opacity: 1; }
+.hero-celestial.sunset { left: 80%; transform: translateY(15vh); opacity: 1; }
+.hero-celestial.evening { left: 50%; transform: translateY(0); opacity: 1; }
+.hero-celestial.night { left: 80%; transform: translateY(10vh); opacity: 1; }
+
+.celestial-body {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--light);
+  box-shadow: 0 0 20px var(--light);
+  transition: all 2s ease;
+}
+
+.hero-section.night .celestial-body,
+.hero-section.fajar .celestial-body,
+.hero-section.evening .celestial-body {
+  background: transparent;
+  box-shadow: inset -12px 10px 0 0 var(--light);
+}
+
+/* =========================================
+   LAYER 2: LANDSCAPE SVG & WIND
+   ========================================= */
+.layer-landscape {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2;
+  pointer-events: none; /* Allows clicks to pass through if necessary */
 }
 
 .landscape-svg {
@@ -117,131 +132,6 @@
   height: 100%;
 }
 
-/* --- SKY & CLOUDS --- */
-.hero-celestial {
-  position: absolute;
-  top: 15%;
-  width: 80px;
-  height: 80px;
-  transition: opacity 2s ease, transform 3s ease-in-out, left 3s ease-in-out;
-}
-
-/* Celestial Body Time States */
-.hero-celestial.fajar {
-  left: 15%;
-  transform: translateY(30vh);
-  opacity: 0;
-}
-.hero-celestial.sunrise {
-  left: 15%;
-  transform: translateY(15vh);
-  opacity: 1;
-}
-.hero-celestial.daylight {
-  left: 50%;
-  transform: translateY(0);
-  opacity: 1;
-}
-.hero-celestial.sunset {
-  left: 80%;
-  transform: translateY(15vh);
-  opacity: 1;
-}
-.hero-celestial.evening {
-  left: 50%;
-  transform: translateY(0);
-  opacity: 1;
-}
-.hero-celestial.night {
-  left: 80%;
-  transform: translateY(10vh);
-  opacity: 1;
-}
-
-/* Celestial Body (Pure HTML CSS) */
-.celestial-body {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--light); /* Sun by default */
-  box-shadow: 0 0 20px var(--light);
-  transition: all 2s ease;
-}
-
-/* Crescent Moon via inset shadow trick */
-.hero-section.night .celestial-body,
-.hero-section.fajar .celestial-body,
-.hero-section.evening .celestial-body {
-  background: transparent;
-  box-shadow: inset -12px 10px 0 0 var(--light);
-}
-
-/* --- FIREPLACE --- */
-.campfire-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.fire-glow {
-  position: absolute;
-  bottom: -20px; left: -40px;
-  width: 140px; height: 140px;
-  background: radial-gradient(circle, rgba(255, 140, 60, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: flicker 2s infinite alternate;
-}
-.fire {
-  position: absolute;
-  bottom: 10px; left: 20px;
-  width: 20px; height: 20px;
-  background: #ff8c3c;
-  transform: rotate(45deg);
-  animation: fire-flicker 1.5s infinite alternate;
-}
-.fire-2 { background: #ffc857; bottom: 15px; left: 25px; width: 15px; height: 15px; animation-delay: 0.2s; }
-.fire-3 { background: #ffc857; bottom: 12px; left: 15px; width: 12px; height: 12px; animation-delay: 0.4s; }
-
-/* Smoke */
-.smoke {
-  position: absolute;
-  bottom: 25px;
-  left: 20px;
-  width: 12px;
-  height: 12px;
-  background: rgba(200, 200, 200, 0.4);
-  border-radius: 50%;
-  filter: blur(4px);
-  animation: float-smoke 3s linear infinite;
-  opacity: 0;
-}
-.smoke-1 { animation-delay: 0s; left: 25px; }
-.smoke-2 { animation-delay: 1s; left: 20px; width: 15px; height: 15px; }
-.smoke-3 { animation-delay: 2s; left: 30px; width: 10px; height: 10px; }
-
-@keyframes float-smoke {
-  0% { transform: translateY(0) scale(1); opacity: 0; }
-  20% { opacity: 0.8; }
-  100% { transform: translateY(-60px) scale(3); opacity: 0; }
-}
-
-/* Day light hides fire */
-.hero-section.daylight .fire,
-.hero-section.daylight .fire-glow,
-.hero-section.daylight .smoke {
-  display: none;
-}
-
-/* Animations */
-@keyframes flicker {
-  0% { opacity: 0.8; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1.05); }
-}
-@keyframes fire-flicker {
-  0% { transform: rotate(45deg) scale(0.9); }
-  100% { transform: rotate(45deg) scale(1.1) translateY(-5px); }
-}
-
-/* Wind Lines */
 .hero-wind-layer {
   position: absolute;
   top: 0; left: 0;
@@ -253,48 +143,55 @@
   stroke-dashoffset: 200;
   animation: wind-blow 6s linear infinite;
 }
-.wind-line.delay {
-  animation-delay: 3s;
-}
+.wind-line.delay { animation-delay: 3s; }
 @keyframes wind-blow {
   0% { stroke-dashoffset: 600; }
   100% { stroke-dashoffset: -600; }
 }
 
-/* --- TEXT & CONTENT OVERLAY --- */
-.hero-content {
+/* Fireplace */
+.campfire-container { position: relative; width: 100%; height: 100%; }
+.fire-glow {
+  position: absolute; bottom: -20px; left: -40px; width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(255, 140, 60, 0.2) 0%, transparent 70%);
+  border-radius: 50%; animation: flicker 2s infinite alternate;
+}
+.fire {
+  position: absolute; bottom: 10px; left: 20px; width: 20px; height: 20px;
+  background: #ff8c3c; transform: rotate(45deg); animation: fire-flicker 1.5s infinite alternate;
+}
+.fire-2 { background: #ffc857; bottom: 15px; left: 25px; width: 15px; height: 15px; animation-delay: 0.2s; }
+.fire-3 { background: #ffc857; bottom: 12px; left: 15px; width: 12px; height: 12px; animation-delay: 0.4s; }
+.smoke {
+  position: absolute; bottom: 25px; left: 20px; width: 12px; height: 12px;
+  background: rgba(200, 200, 200, 0.4); border-radius: 50%; filter: blur(4px);
+  animation: float-smoke 3s linear infinite; opacity: 0;
+}
+.smoke-1 { animation-delay: 0s; left: 25px; }
+.smoke-2 { animation-delay: 1s; left: 20px; width: 15px; height: 15px; }
+.smoke-3 { animation-delay: 2s; left: 30px; width: 10px; height: 10px; }
+
+@keyframes float-smoke {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(-60px) scale(3); opacity: 0; }
+}
+.hero-section.daylight .fire, .hero-section.daylight .fire-glow, .hero-section.daylight .smoke { display: none; }
+@keyframes flicker { 0% { opacity: 0.8; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
+@keyframes fire-flicker { 0% { transform: rotate(45deg) scale(0.9); } 100% { transform: rotate(45deg) scale(1.1) translateY(-5px); } }
+
+/* =========================================
+   LAYER 3: FOREGROUND UI & TEXT
+   ========================================= */
+.layer-ui {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; width: 100%; height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.hero-title-container {
-  text-align: center;
-  color: #efe8e8;
-  pointer-events: auto;
-}
-
-.hero-title {
-  position: relative;
-  display: inline-block;
-  font-size: 8rem;
-  line-height: 1;
-  letter-spacing: 5px;
-  margin: 0;
-}
-
-.hero-subtitle {
-  font-size: 2rem;
-  letter-spacing: 8px;
-  margin: 0;
+  z-index: 3;
+  pointer-events: none; /* Text container passes clicks through */
 }
 
 .hero-location-time {
@@ -306,19 +203,30 @@
   font-size: 1.2rem;
   letter-spacing: 2px;
   opacity: 0.8;
+  pointer-events: auto; /* Allow interaction */
+}
+
+.hero-title-container {
+  text-align: center;
+  color: #efe8e8;
   pointer-events: auto;
+}
+.hero-title {
+  position: relative;
+  display: inline-block;
+  font-size: 8rem;
+  line-height: 1;
+  letter-spacing: 5px;
+  margin: 0;
+}
+.hero-subtitle {
+  font-size: 2rem;
+  letter-spacing: 8px;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 4rem;
-  }
-  .hero-subtitle {
-    font-size: 0.875rem;
-  }
-  .hero-location-time {
-    top: 1rem;
-    right: 1rem;
-    font-size: 0.875rem;
-  }
+  .hero-title { font-size: 4rem; }
+  .hero-subtitle { font-size: 0.875rem; }
+  .hero-location-time { top: 1rem; right: 1rem; font-size: 0.875rem; }
 }

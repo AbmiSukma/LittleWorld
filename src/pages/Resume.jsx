@@ -80,7 +80,7 @@ const Resume = () => {
         <main className="resume-content">
           <section className="resume-header">
             <h1 className="resume-name">Abmi Sukma Edri</h1>
-            <h2 className="resume-title">UI/UX Designer</h2>
+            <h2 className="resume-title">UI/UX Design and Researcher</h2>
             <p className="resume-location">Pekanbaru, Riau, Indonesia</p>
 
             <div className="resume-contact-grid">
@@ -94,7 +94,7 @@ const Resume = () => {
               </div>
               <div className="contact-item">
                 <span className="contact-label">Website</span>
-                <a href="https://herlittleworld-pb5i51a0u-abmisukmas-projects.vercel.app/" className="contact-value" target="_blank" rel="noopener noreferrer">ameyco.vercel.app</a>
+                <a href="https://amey-herlittleworld.vercel.app" className="contact-value" target="_blank" rel="noopener noreferrer">https://amey-herlittleworld.vercel.app</a>
               </div>
               <div className="contact-item">
                 <span className="contact-label">LinkedIn</span>
