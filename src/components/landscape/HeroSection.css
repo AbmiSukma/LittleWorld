@@ -299,44 +299,37 @@
   z-index: 10;
 }
 
-.hero-location-time {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  text-align: right;
-  font-family: 'Reddit Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  letter-spacing: 0.1em;
-  line-height: 1.4;
-  pointer-events: auto;
-}
-
 .hero-title-container {
   text-align: center;
-  position: relative;
+  color: #efe8e8;
   pointer-events: auto;
 }
 
 .hero-title {
-  font-family: 'Dela Gothic One', sans-serif;
-  font-size: 8rem;
-  color: var(--text-primary);
-  line-height: 1;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
   position: relative;
+  display: inline-block;
+  font-size: 8rem;
+  line-height: 1;
+  letter-spacing: 5px;
+  margin: 0;
 }
 
 .hero-subtitle {
-  font-family: 'Reddit Sans', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  letter-spacing: 0.25em;
-  margin-top: 1rem;
+  font-size: 2rem;
+  letter-spacing: 8px;
+  margin: 0;
+}
+
+.hero-location-time {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  text-align: right;
+  color: #efe8e8;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  pointer-events: auto;
 }
 
 @media (max-width: 768px) {
