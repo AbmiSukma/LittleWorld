@@ -26,15 +26,7 @@ const HeroSection = ({ timeState }) => {
         
         {/* Sun/Moon Container */}
         <div className={`hero-celestial ${timeState.id}`}>
-           {timeState.id === 'night' || timeState.id === 'fajar' || timeState.id === 'evening' ? (
-             <svg viewBox="0 0 100 100" width="100%" height="100%">
-               <path d="M 50 20 A 30 30 0 1 0 80 50 A 25 25 0 1 1 50 20" fill="var(--light)" opacity="0.9" />
-             </svg>
-           ) : (
-             <svg viewBox="0 0 100 100" width="100%" height="100%">
-               <circle cx="50" cy="50" r="30" fill="var(--light)" opacity="0.9" />
-             </svg>
-           )}
+           <div className="celestial-body"></div>
         </div>
 
         {/* The SVG Landscape provided by user */}

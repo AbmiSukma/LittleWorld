@@ -9,9 +9,11 @@ const Home = () => {
   return (
     <div className="home-wrapper">
       <HeroSection timeState={timeState} />
+      {/* 
       <div className="content-overlay">
         <UndergroundSection />
       </div>
+      */}
     </div>
   );
 };
