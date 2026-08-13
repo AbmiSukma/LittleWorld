@@ -262,12 +262,49 @@
   }
   .resume-layout {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   .resume-sidebar {
-    display: none; /* Hide scrollspy on mobile */
+    display: flex;
+    position: sticky;
+    top: 60px;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100vw;
+    margin-left: -20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    gap: 12px;
+    border-bottom: 1px solid #eaeaea;
   }
-  .resume-top-bar {
-    padding-left: 0;
+  
+  .resume-nav-item {
+    background-color: #f5f5f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  
+  .resume-nav-item.active {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .resume-nav-line {
+    display: none;
+  }
+  
+  .resume-nav-label {
+    position: static;
+    opacity: 1;
+    transform: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: inherit;
   }
   .exp-header {
     flex-direction: column;

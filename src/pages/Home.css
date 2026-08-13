@@ -2,4 +2,21 @@
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  /* Push the content down so the background landscape is clearly visible first */
+  padding-top: 70vh;
+  /* Add a gentle fade-in gradient to ground the cards if desired, or let them float */
+  pointer-events: none;
+}
+
+/* Allow cards inside overlay to receive clicks */
+.content-overlay > * {
+  pointer-events: auto;
 }

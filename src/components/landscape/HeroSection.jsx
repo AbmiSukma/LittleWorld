@@ -20,47 +20,75 @@ const HeroSection = ({ timeState }) => {
   }, []);
 
   return (
-    <section className="hero-section">
-      <div className="hero-background">
-        {/* Sun/Moon */}
-        <div className={`hero-celestial ${timeState.id}`}>
-           {timeState.id === 'night' || timeState.id === 'fajar' || timeState.id === 'evening' ? (
-             <svg viewBox="0 0 100 100" width="100%" height="100%">
-               <path d="M 50 20 A 30 30 0 1 0 80 50 A 25 25 0 1 1 50 20" fill="var(--light)" opacity="0.9" />
-             </svg>
-           ) : (
-             <svg viewBox="0 0 100 100" width="100%" height="100%">
-               <circle cx="50" cy="50" r="30" fill="var(--light)" opacity="0.9" />
-             </svg>
-           )}
-        </div>
-        
-        {/* Low Poly Mountains */}
-        <div className="hero-mountains">
-          <svg viewBox="0 0 1440 600" preserveAspectRatio="none">
-            {/* Background Mountains */}
-            <path fill="var(--mountain-back)" d="M0,400 L200,200 L400,350 L700,100 L1000,400 L1200,250 L1440,500 L1440,600 L0,600 Z" />
-            {/* Midground Mountains */}
-            <path fill="var(--mountain-front)" d="M-100,600 L150,300 L350,450 L550,250 L850,550 L1100,350 L1350,550 L1500,600 Z" />
-          </svg>
+    <section className={`hero-section ${timeState.id}`}>
+      {/* --- The New Unified Background --- */}
+      <div id="landscape-wrapper">
+        {/* Sky and Celestial Bodies */}
+        <div className="sky">
+          <div className="moon"></div>
+          {/* Geometric Clouds */}
+          <div className="cloud cloud-1"></div>
+          <div className="cloud cloud-2"></div>
+          <div className="cloud cloud-3"></div>
         </div>
 
-        {/* Floating Clouds / Wind */}
-        <div className="hero-wind-layer">
-          <svg viewBox="0 0 1440 600" preserveAspectRatio="none">
-             <path className="wind-line" d="M -200,200 Q 100,180 300,200 T 800,200 T 1600,200" fill="none" stroke="var(--fog)" strokeWidth="4" />
-             <path className="wind-line delay" d="M -200,300 Q 200,320 400,300 T 1000,300 T 1600,300" fill="none" stroke="var(--fog)" strokeWidth="3" />
-          </svg>
+        {/* Background Mountains */}
+        <div className="mountains">
+          <div className="mountain m-left"></div>
+          <div className="mountain m-center"></div>
+          <div className="mountain m-right"></div>
+          <div className="mountain m-small"></div>
         </div>
 
-        {/* Foreground Trees (Bottom edge) */}
-        <div className="hero-trees">
-          <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-            <path fill="#0a1913" d="M50,100 L70,20 L90,100 Z M200,100 L230,10 L260,100 Z M1100,100 L1140,5 L1180,100 Z M1300,100 L1320,30 L1340,100 Z" />
-          </svg>
+        {/* Foreground Hills */}
+        <div className="hills">
+          <div className="hill hill-left"></div>
+          <div className="hill hill-right"></div>
+          <div className="hill hill-center"></div>
+        </div>
+
+        {/* Foreground Elements (Trees, Tent, Fire) */}
+        <div className="foreground">
+          {/* Wind lines */}
+          <div className="hero-wind-layer">
+            <svg viewBox="0 0 1440 600" preserveAspectRatio="none">
+               <path className="wind-line" d="M -200,200 Q 100,180 300,200 T 800,200 T 1600,200" fill="none" stroke="var(--fog)" strokeWidth="4" />
+               <path className="wind-line delay" d="M -200,300 Q 200,320 400,300 T 1000,300 T 1600,300" fill="none" stroke="var(--fog)" strokeWidth="3" />
+            </svg>
+          </div>
+
+          {/* Trees */}
+          <div className="tree tree-1"></div>
+          <div className="tree tree-2"></div>
+          <div className="tree tree-3"></div>
+          <div className="tree tree-4"></div>
+
+          {/* Tent */}
+          <div className="tent">
+            <div className="tent-left"></div>
+            <div className="tent-right"></div>
+            <div className="tent-door"></div>
+            <div className="tent-pole"></div>
+            <div className="tent-flag"></div>
+          </div>
+
+          {/* Fireplace */}
+          <div className="fireplace">
+            <div className="log log-1"></div>
+            <div className="log log-2"></div>
+            <div className="fire fire-1"></div>
+            <div className="fire fire-2"></div>
+            <div className="fire fire-3"></div>
+            {/* Added Smoke Animation elements */}
+            <div className="smoke smoke-1"></div>
+            <div className="smoke smoke-2"></div>
+            <div className="smoke smoke-3"></div>
+            <div className="fire-glow"></div>
+          </div>
         </div>
       </div>
 
+      {/* --- Foreground Content (AMEY + Time) --- */}
       <div className="hero-content">
         <div className="hero-location-time">
           <div>INDONESIA</div>

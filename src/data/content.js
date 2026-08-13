@@ -28,6 +28,19 @@ export const environmentStates = {
 
       '--card-bg': '#F3F0E9',
       '--card-line': '#D9D4CB',
+
+      '--cloud-color': 'rgba(40, 50, 70, 0.8)',
+      '--hill-color': '#38433d',
+      '--ground-color': '#2b332e',
+      '--tree-color': '#1c2420',
+      '--tree-shadow': '#121715',
+      '--tent-light': '#8c9da6',
+      '--tent-dark': '#60707a',
+      '--tent-inside': '#1a2024',
+      '--tent-flag': '#8a4242',
+      '--fire-glow': 'rgba(255, 140, 60, 0.2)',
+      '--fire-orange': '#ff8c3c',
+      '--fire-yellow': '#ffc857',
     }
   },
 
@@ -54,6 +67,19 @@ export const environmentStates = {
 
       '--card-bg': '#F5F0E7',
       '--card-line': '#DED5C8',
+
+      '--cloud-color': 'rgba(180, 120, 110, 0.7)',
+      '--hill-color': '#5c4b44',
+      '--ground-color': '#423530',
+      '--tree-color': '#2b221f',
+      '--tree-shadow': '#1a1413',
+      '--tent-light': '#d2ac9a',
+      '--tent-dark': '#9e7a68',
+      '--tent-inside': '#382a24',
+      '--tent-flag': '#a85042',
+      '--fire-glow': 'rgba(255, 140, 60, 0.1)',
+      '--fire-orange': '#ff9c5c',
+      '--fire-yellow': '#ffe877',
     }
   },
 
@@ -80,6 +106,19 @@ export const environmentStates = {
 
       '--card-bg': '#F5F1E8',
       '--card-line': '#D8D8CF',
+
+      '--cloud-color': 'rgba(255, 255, 255, 0.8)',
+      '--hill-color': '#738c5b',
+      '--ground-color': '#586b45',
+      '--tree-color': '#3a472d',
+      '--tree-shadow': '#26301d',
+      '--tent-light': '#e3dbb8',
+      '--tent-dark': '#b5ad8c',
+      '--tent-inside': '#474332',
+      '--tent-flag': '#c45858',
+      '--fire-glow': 'rgba(0, 0, 0, 0)',
+      '--fire-orange': 'rgba(0, 0, 0, 0)',
+      '--fire-yellow': 'rgba(0, 0, 0, 0)',
     }
   },
 
@@ -106,6 +145,19 @@ export const environmentStates = {
 
       '--card-bg': '#F4EFE5',
       '--card-line': '#DCD3C5',
+
+      '--cloud-color': 'rgba(180, 120, 130, 0.7)',
+      '--hill-color': '#665243',
+      '--ground-color': '#4a3b30',
+      '--tree-color': '#30261f',
+      '--tree-shadow': '#1f1814',
+      '--tent-light': '#d4a37b',
+      '--tent-dark': '#a17452',
+      '--tent-inside': '#3b2819',
+      '--tent-flag': '#b85248',
+      '--fire-glow': 'rgba(255, 120, 60, 0.15)',
+      '--fire-orange': '#ff8c3c',
+      '--fire-yellow': '#ffc857',
     }
   },
 
@@ -132,6 +184,19 @@ export const environmentStates = {
 
       '--card-bg': '#F1EEE7',
       '--card-line': '#D7D3CC',
+
+      '--cloud-color': 'rgba(50, 60, 80, 0.8)',
+      '--hill-color': '#3e4740',
+      '--ground-color': '#2d332e',
+      '--tree-color': '#1c211e',
+      '--tree-shadow': '#111412',
+      '--tent-light': '#9cb5ba',
+      '--tent-dark': '#6b848a',
+      '--tent-inside': '#22292b',
+      '--tent-flag': '#964242',
+      '--fire-glow': 'rgba(255, 140, 60, 0.2)',
+      '--fire-orange': '#ff8c3c',
+      '--fire-yellow': '#ffc857',
     }
   },
 
@@ -158,6 +223,19 @@ export const environmentStates = {
 
       '--card-bg': '#EDEAE3',
       '--card-line': '#D5D1C9',
+
+      '--cloud-color': 'rgba(60, 56, 92, 0.8)',
+      '--hill-color': '#38354c',
+      '--ground-color': '#2a2538',
+      '--tree-color': '#191c26',
+      '--tree-shadow': '#11131a',
+      '--tent-light': '#a49fc4',
+      '--tent-dark': '#7b7899',
+      '--tent-inside': '#1f1a26',
+      '--tent-flag': '#a84242',
+      '--fire-glow': 'rgba(255, 140, 60, 0.2)',
+      '--fire-orange': '#ff8c3c',
+      '--fire-yellow': '#ffc857',
     }
   }
 };

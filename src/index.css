@@ -1,5 +1,7 @@
 :root {
-  font-family: 'Odibee Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-heading: 'Odibee Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-body: 'Reddit Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
 
@@ -7,9 +9,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  /* Default transitions for time engine */
-  transition: background-color 2s ease, color 2s ease;
+h1, h2, h3, h4, h5, h6, .display-text {
+  font-family: var(--font-heading);
 }
 
 * {
@@ -24,6 +27,8 @@ body {
   color: var(--text-primary, #2c3e50);
   min-height: 100vh;
   overflow-x: hidden;
+  /* Time engine transitions only on body */
+  transition: background-color 2s ease, color 2s ease;
 }
 
 /* Base styles for standard pages */
