@@ -4,170 +4,184 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1; /* Lowest z-index so content flows over it */
+  z-index: 1;
   overflow: hidden;
   background-color: var(--sky-bottom);
+  
+  /* BASE SVG COLORS (Night / Default) */
+  --svg-m-back-left: var(--mountain-back);
+  --svg-m-back-right: var(--mountain-back);
+  --svg-m-mid-left: var(--mountain-front);
+  --svg-m-mid-right: var(--mountain-front);
+  --svg-m-mid-center: var(--mountain-front);
+  --svg-snow: var(--text-primary);
+  --svg-hill-left: var(--terrain-base);
+  --svg-hill-right: var(--terrain-base);
+  --svg-ground: var(--terrain-dark);
+  
+  --svg-tent-main: #9E8CB6;
+  --svg-tent-shadow: #8C79A6;
+  --svg-tent-inside: #38262F;
+  --svg-tent-dark: #312127;
+  --svg-tent-pole-main: #5F2728;
+  --svg-tent-pole-dark: #381E29;
+  --svg-flag: #FF0000;
+  
+  --svg-tree: #122A1A;
+  --svg-fog: var(--fog);
+
+  --svg-log-light: #7F503C;
+  --svg-log-dark: #312121;
 }
 
-/* Penempatan dan Latar Belakang Utama */
-.landscape-wrapper {
+/* --- DYNAMIC LIGHTING / SHADOWS --- */
+/* Fajar / Sunrise: Light from Left */
+.hero-section.fajar, .hero-section.sunrise {
+  --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 85%, white);
+  --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 85%, black);
+  
+  --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 85%, white);
+  --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 85%, black);
+  --svg-m-mid-center: var(--mountain-front);
+
+  --svg-hill-left: color-mix(in srgb, var(--terrain-base) 90%, white);
+  --svg-hill-right: color-mix(in srgb, var(--terrain-base) 90%, black);
+
+  --svg-tent-main: color-mix(in srgb, #9E8CB6 85%, white);
+  --svg-tent-shadow: color-mix(in srgb, #8C79A6 85%, black);
+}
+
+/* Sun Overhead (Daylight) */
+.hero-section.daylight {
+  --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 95%, white);
+  --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 95%, white);
+  
+  --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 95%, white);
+  --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 95%, white);
+  --svg-m-mid-center: color-mix(in srgb, var(--mountain-front) 95%, white);
+
+  --svg-hill-left: var(--terrain-base);
+  --svg-hill-right: var(--terrain-base);
+
+  --svg-tent-main: #9E8CB6;
+  --svg-tent-shadow: #9E8CB6;
+}
+
+/* Sun on the Right (Sunset, Evening) */
+.hero-section.sunset, .hero-section.evening {
+  --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 85%, black);
+  --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 85%, white);
+  
+  --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 85%, black);
+  --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 85%, white);
+  --svg-m-mid-center: var(--mountain-front);
+  
+  --svg-hill-left: color-mix(in srgb, var(--terrain-base) 90%, black);
+  --svg-hill-right: color-mix(in srgb, var(--terrain-base) 90%, white);
+
+  --svg-tent-main: color-mix(in srgb, #9E8CB6 85%, black); 
+  --svg-tent-shadow: color-mix(in srgb, #8C79A6 85%, white);
+}
+
+/* Night defaults to base colors above, but maybe slightly darker right faces to mimic faint moonlight from left */
+.hero-section.night {
+  --svg-m-back-left: var(--mountain-back);
+  --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 95%, black);
+  
+  --svg-m-mid-left: var(--mountain-front);
+  --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 95%, black);
+
+  --svg-hill-left: var(--terrain-base);
+  --svg-hill-right: color-mix(in srgb, var(--terrain-base) 95%, black);
+}
+
+/* Transitions for SVG variables */
+.hero-section * {
+  transition: fill 2s ease, stroke 2s ease;
+}
+
+/* --- MAIN CONTAINER --- */
+.hero-svg-container {
   position: absolute;
   width: 100%;
-  height: 100vh; /* Sesuaikan dengan kebutuhan */
-  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 50%, var(--sky-bottom) 100%);
+  height: 100%;
+  background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
   overflow: hidden;
 }
 
-/* Langit, Bulan, Awan */
-.sky {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 60%;
-}
-.moon {
-  position: absolute; top: 15%; left: 15%; width: 40px; height: 40px;
-  background: radial-gradient(circle at center, var(--light) 40%, rgba(255, 255, 255, 0) 100%);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 40% 50%, 0% 100%);
-}
-
-.hero-section.daylight .moon,
-.hero-section.sunrise .moon {
-  clip-path: none;
-  border-radius: 50%;
-  background: var(--light);
-}
-
-.cloud {
-  position: absolute; background: var(--cloud-color);
-  clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
-  animation: floatCloud 20s linear infinite;
-}
-.cloud-1 { top: 20%; left: 35%; width: 150px; height: 35px; animation-duration: 45s; }
-.cloud-2 { top: 10%; left: 60%; width: 200px; height: 45px; animation-duration: 35s; animation-delay: 5s; }
-
-@keyframes floatCloud {
-  0% { transform: translateX(-20vw); }
-  100% { transform: translateX(120vw); }
-}
-
-/* Gunung - Bentuk dan Warna */
-.mountain-layer {
-  position: absolute;
-  bottom: 20%;
-  width: 100%;
-  height: 60%;
-}
-.mountain {
-  position: absolute; bottom: 0;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  transition: background-color 1s ease-in-out;
-}
-.mt-back { background: var(--mountain-back); }
-.mt-mid { background: var(--mountain-front); }
-
-/* Penempatan Gunung - 5 Buah */
-.mt-1 { left: -10%; width: 50%; height: 75%; z-index: 0; } /* Belakang Kiri */
-.mt-2 { left: 25%; width: 50%; height: 95%; z-index: 0; } /* Belakang Tengah */
-.mt-3 { left: 60%; width: 50%; height: 70%; z-index: 0; } /* Belakang Kanan */
-.mt-4 { left: 15%; width: 25%; height: 60%; z-index: 1;} /* Tengah Kiri-Tengah */
-.mt-5 { left: 65%; width: 25%; height: 55%; z-index: 1;} /* Tengah Tengah-Kanan */
-
-/* Bukit - Bentuk dan Warna */
-.hill-layer {
+.landscape-svg {
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
-  height: 35%;
-  z-index: 3;
-}
-.hill {
-  position: absolute; bottom: 0;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  transition: background-color 1s ease-in-out;
-}
-.hill-dark { background: var(--hill-color); }
-
-/* Penempatan Bukit - 3 Buah */
-.hill-1 { left: -10%; width: 60%; height: 35%; z-index: 2; } /* Kiri */
-.hill-2 { left: 20%; width: 60%; height: 45%; z-index: 2; } /* Tengah */
-.hill-3 { left: 50%; width: 60%; height: 40%; z-index: 2; } /* Kanan */
-
-/* Perkemahan */
-.campsite {
-  position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none; /* Untuk mengabaikan klik */
-  z-index: 3;
+  height: 100%;
 }
 
-/* Pohon - Bentuk, Warna, dan Penempatan (5 buah) */
-.tree {
-  position: absolute; bottom: 0; background: var(--tree-color);
-  clip-path: polygon(50% 0%, 20% 100%, 80% 100%);
-  transition: background-color 1s ease-in-out;
-}
-.tree-1 { left: 10%; width: 100px; height: 300px; bottom: 5%;} /* Kiri 1 */
-.tree-2 { left: 28%; width: 70px; height: 220px; bottom: 18%;} /* Kiri 2 */
-.tree-3 { left: 42%; width: 80px; height: 180px; bottom: 25%;} /* Kiri 3 (dekat tenda) */
-.tree-4 { left: 75%; width: 80px; height: 220px; bottom: 15%;} /* Kanan 1 */
-.tree-5 { left: 90%; width: 90px; height: 300px; bottom: 10%;} /* Kanan 2 */
-
-/* Tenda - Bentuk, Warna, Penempatan */
-.tent {
-  position: absolute; bottom: 25%; left: 48%;
-  width: 120px; height: 160px;
-}
-.tent-left {
-  position: absolute; bottom: 0; left: 0; width: 50%; height: 100%;
-  background: var(--tent-light); clip-path: polygon(100% 0, 0 100%, 100% 100%);
-  transition: background-color 1s ease-in-out;
-}
-.tent-right {
-  position: absolute; bottom: 0; left: 50%; width: 50%; height: 100%;
-  background: var(--tent-dark); clip-path: polygon(0 0, 0 100%, 100% 100%);
-  transition: background-color 1s ease-in-out;
-}
-.tent-door {
-  position: absolute; bottom: 0; left: 40%; width: 20%; height: 40%;
-  background: var(--tent-inside); clip-path: polygon(50% 0, 0 100%, 100% 100%);
-  transition: background-color 1s ease-in-out;
-}
-.tent-pole {
-  position: absolute; top: -15px; left: 49%; width: 2%; height: 15px;
-  background: #333;
-}
-.tent-flag {
-  position: absolute; top: -15px; left: 51%; width: 20px; height: 10px;
-  background: var(--tent-flag); clip-path: polygon(0 0, 100% 50%, 0 100%);
-  transition: background-color 1s ease-in-out;
+/* --- SKY & CLOUDS --- */
+.hero-celestial {
+  position: absolute;
+  top: 15%;
+  width: 80px;
+  height: 80px;
+  transition: opacity 2s ease, transform 3s ease-in-out, left 3s ease-in-out;
 }
 
-/* Api Unggun */
-.campfire {
-  position: absolute; bottom: 20%; left: 66%;
-  width: 60px; height: 60px;
+/* Celestial Body Time States */
+.hero-celestial.fajar {
+  left: 15%;
+  transform: translateY(30vh);
+  opacity: 0;
 }
-.logs {
-  position: absolute; bottom: 0; left: 5px; width: 50px; height: 15px;
-  background: #2e1c10; border-radius: 5px;
+.hero-celestial.sunrise {
+  left: 15%;
+  transform: translateY(15vh);
+  opacity: 1;
 }
-.logs-1 { transform: rotate(20deg); }
-.logs-2 { transform: rotate(-20deg); left: 10px; }
+.hero-celestial.daylight {
+  left: 50%;
+  transform: translateY(0);
+  opacity: 1;
+}
+.hero-celestial.sunset {
+  left: 80%;
+  transform: translateY(15vh);
+  opacity: 1;
+}
+.hero-celestial.evening {
+  left: 50%;
+  transform: translateY(0);
+  opacity: 1;
+}
+.hero-celestial.night {
+  left: 80%;
+  transform: translateY(10vh);
+  opacity: 1;
+}
 
-.flame {
-  position: absolute; bottom: 10px; left: 15px; width: 30px; height: 30px;
-  background: var(--fire-orange); transform: rotate(45deg);
-  box-shadow: 0 0 20px 5px var(--fire-glow);
+/* --- FIREPLACE --- */
+.campfire-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.fire-glow {
+  position: absolute;
+  bottom: -20px; left: -40px;
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(255, 140, 60, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: flicker 2s infinite alternate;
+}
+.fire {
+  position: absolute;
+  bottom: 10px; left: 20px;
+  width: 20px; height: 20px;
+  background: #ff8c3c;
+  transform: rotate(45deg);
   animation: fire-flicker 1.5s infinite alternate;
 }
-.flame-inner {
-  position: absolute; bottom: 15px; left: 20px; width: 20px; height: 20px;
-  background: var(--fire-yellow); transform: rotate(45deg);
-  animation: fire-flicker 1.2s infinite alternate;
-}
-
-@keyframes fire-flicker {
-  0% { transform: rotate(45deg) scale(0.9); }
-  100% { transform: rotate(45deg) scale(1.1) translateY(-5px); }
-}
+.fire-2 { background: #ffc857; bottom: 15px; left: 25px; width: 15px; height: 15px; animation-delay: 0.2s; }
+.fire-3 { background: #ffc857; bottom: 12px; left: 15px; width: 12px; height: 12px; animation-delay: 0.4s; }
 
 /* Smoke */
 .smoke {
@@ -193,27 +207,40 @@
 }
 
 /* Day light hides fire */
-.hero-section.daylight .flame,
-.hero-section.daylight .flame-inner,
+.hero-section.daylight .fire,
+.hero-section.daylight .fire-glow,
 .hero-section.daylight .smoke {
   display: none;
 }
 
-/* UI Api Unggun (Burung) */
-.birds {
-  position: absolute; top: 38%; right: 18%; width: 40px; height: 20px;
+/* Animations */
+@keyframes flicker {
+  0% { opacity: 0.8; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1.05); }
 }
-.bird {
-  position: absolute; width: 12px; height: 8px; background: var(--tree-color);
-  clip-path: polygon(50% 0, 0 100%, 100% 100%);
-  animation: float-bird 2s ease-in-out infinite alternate;
+@keyframes fire-flicker {
+  0% { transform: rotate(45deg) scale(0.9); }
+  100% { transform: rotate(45deg) scale(1.1) translateY(-5px); }
 }
-.bird-1 { left: 0; animation-delay: 0.2s; }
-.bird-2 { right: 0; top: 5px;}
 
-@keyframes float-bird {
-  from { transform: translateY(0px); }
-  to { transform: translateY(-5px); }
+/* Wind Lines */
+.hero-wind-layer {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.wind-line {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: wind-blow 6s linear infinite;
+}
+.wind-line.delay {
+  animation-delay: 3s;
+}
+@keyframes wind-blow {
+  0% { stroke-dashoffset: 600; }
+  100% { stroke-dashoffset: -600; }
 }
 
 /* --- TEXT & CONTENT OVERLAY --- */
@@ -224,9 +251,10 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  pointer-events: none; /* Let clicks pass through to background if necessary, though nothing is clickable here */
+  pointer-events: none;
   z-index: 10;
 }
 
@@ -274,11 +302,5 @@
     top: 1rem;
     right: 1rem;
     font-size: 0.875rem;
-  }
-  .tent {
-    left: 20%;
-  }
-  .campfire {
-    left: 70%;
   }
 }
