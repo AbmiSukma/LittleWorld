@@ -32,7 +32,7 @@ const CardElsewhere = ({ socials, delay = 0 }) => {
                     <span aria-hidden="true" className="social-loyalty-card__cell social-loyalty-card__cell--empty"></span>
                     
                     {/* LinkedIn Stamp */}
-                    <a href="https://www.linkedin.com/in/abmi-sukma-1948ab250/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn /arieare" data-collected="true" className="social-loyalty-card__cell social-loyalty-card__stamp social-loyalty-card__stamp--linkedin">
+                    <a href="https://www.linkedin.com/in/abmi-sukma-1948ab250/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn /abmise" data-collected="true" className="social-loyalty-card__cell social-loyalty-card__stamp social-loyalty-card__stamp--linkedin">
                       <span aria-hidden="true" className="social-loyalty-card__stamp-mark">
                         <span className="social-loyalty-card__stamp-ring">
                           <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true" className="social-loyalty-card__stamp-ring-text social-loyalty-card__stamp-ring-text--top">
@@ -41,7 +41,7 @@ const CardElsewhere = ({ socials, delay = 0 }) => {
                           </svg>
                           <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true" className="social-loyalty-card__stamp-ring-text social-loyalty-card__stamp-ring-text--bottom">
                             <defs><path id="social-loyalty-stamp-linkedin-2-bottom" d="M 83 50 A 33 33 0 0 1 17 50"></path></defs>
-                            <text><textPath href="#social-loyalty-stamp-linkedin-2-bottom" startOffset="50%">/arieare</textPath></text>
+                            <text><textPath href="#social-loyalty-stamp-linkedin-2-bottom" startOffset="50%">/abmise</textPath></text>
                           </svg>
                           <span className="social-loyalty-card__stamp-center">
                             <span className="social-loyalty-card__icon">
@@ -56,7 +56,7 @@ const CardElsewhere = ({ socials, delay = 0 }) => {
                     <span aria-hidden="true" className="social-loyalty-card__cell social-loyalty-card__cell--empty"></span>
                     
                     {/* Instagram Stamp */}
-                    <a href="https://www.instagram.com/abmisukma/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @arieare" data-collected="true" className="social-loyalty-card__cell social-loyalty-card__stamp social-loyalty-card__stamp--instagram">
+                    <a href="https://www.instagram.com/abmisukma/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @abmise" data-collected="true" className="social-loyalty-card__cell social-loyalty-card__stamp social-loyalty-card__stamp--instagram">
                       <span aria-hidden="true" className="social-loyalty-card__stamp-mark">
                         <span className="social-loyalty-card__stamp-ring">
                           <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true" className="social-loyalty-card__stamp-ring-text social-loyalty-card__stamp-ring-text--top">
@@ -65,7 +65,7 @@ const CardElsewhere = ({ socials, delay = 0 }) => {
                           </svg>
                           <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true" className="social-loyalty-card__stamp-ring-text social-loyalty-card__stamp-ring-text--bottom">
                             <defs><path id="social-loyalty-stamp-instagram-5-bottom" d="M 83 50 A 33 33 0 0 1 17 50"></path></defs>
-                            <text><textPath href="#social-loyalty-stamp-instagram-5-bottom" startOffset="50%">@arieare</textPath></text>
+                            <text><textPath href="#social-loyalty-stamp-instagram-5-bottom" startOffset="50%">@abmise</textPath></text>
                           </svg>
                           <span className="social-loyalty-card__stamp-center">
                             <span className="social-loyalty-card__icon">
@@ -77,7 +77,7 @@ const CardElsewhere = ({ socials, delay = 0 }) => {
                     </a>
                     
                     {/* GitHub Stamp */}
-                    <a href="https://github.com/abmisukma" target="_blank" rel="noopener noreferrer" aria-label="GitHub /arieare" data-collected="true" className="social-loyalty-card__cell social-loyalty-card__stamp social-loyalty-card__stamp--github">
+                    <a href="https://github.com/abmisukma" target="_blank" rel="noopener noreferrer" aria-label="GitHub /abmise" data-collected="true" className="social-loyalty-card__cell social-loyalty-card__stamp social-loyalty-card__stamp--github">
                       <span aria-hidden="true" className="social-loyalty-card__stamp-mark">
                         <span className="social-loyalty-card__stamp-ring">
                           <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true" className="social-loyalty-card__stamp-ring-text social-loyalty-card__stamp-ring-text--top">
@@ -86,7 +86,7 @@ const CardElsewhere = ({ socials, delay = 0 }) => {
                           </svg>
                           <svg viewBox="0 0 100 100" focusable="false" aria-hidden="true" className="social-loyalty-card__stamp-ring-text social-loyalty-card__stamp-ring-text--bottom">
                             <defs><path id="social-loyalty-stamp-github-6-bottom" d="M 83 50 A 33 33 0 0 1 17 50"></path></defs>
-                            <text><textPath href="#social-loyalty-stamp-github-6-bottom" startOffset="50%">/arieare</textPath></text>
+                            <text><textPath href="#social-loyalty-stamp-github-6-bottom" startOffset="50%">/abmise</textPath></text>
                           </svg>
                           <span className="social-loyalty-card__stamp-center">
                             <span className="social-loyalty-card__icon">

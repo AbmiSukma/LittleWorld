@@ -94,11 +94,11 @@ const Resume = () => {
               </div>
               <div className="contact-item">
                 <span className="contact-label">Website</span>
-                <a href="https://amey-herlittleworld.vercel.app" className="contact-value" target="_blank" rel="noopener noreferrer">https://amey-herlittleworld.vercel.app</a>
+                <a href="https://amey-herlittleworld.vercel.app" className="contact-value" target="_blank" rel="noopener noreferrer">amey-herlittleworld.co</a>
               </div>
               <div className="contact-item">
                 <span className="contact-label">LinkedIn</span>
-                <a href="https://linkedin.com/in/ameyco" className="contact-value" target="_blank" rel="noopener noreferrer">linkedin.com/in/ameyco</a>
+                <a href="https://linkedin.com/in/abmise" className="contact-value" target="_blank" rel="noopener noreferrer">linkedin.com/in/abmise</a>
               </div>
               <div className="contact-item">
                 <span className="contact-label">Github</span>

@@ -47,7 +47,7 @@ const CardNotebook = ({ data, delay = 0, rotate = 0 }) => {
               </div>
               <div className="meta-box">
                 <span className="meta-label">STATUS</span>
-                <span className="meta-value meta-active">● ACTIVE</span>
+                <span className="meta-value meta-graduate">● GRADUATE</span>
               </div>
             </div>
 

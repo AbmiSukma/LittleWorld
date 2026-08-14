@@ -35,21 +35,21 @@ export const environmentStates = {
     id: 'sunrise',
     start: 7,
     end: 11,
-    label: 'Sunrise',
+    label: 'Pagi',
     colors: {
-      '--sky-top': '#B87870',
-      '--sky-mid': '#D79A79',
-      '--sky-bottom': '#F2C99B',
+      '--sky-top': '#6896B2',
+      '--sky-mid': '#9CAAB7',
+      '--sky-bottom': '#EBC1A4',
 
-      '--mountain-back': '#687080',
-      '--mountain-front': '#4B5362',
+      '--mountain-back': '#697A8C',
+      '--mountain-front': '#4A5C6D',
 
-      '--terrain-base': '#786A58',
-      '--terrain-dark': '#5B5146',
+      '--terrain-base': '#5A7553',
+      '--terrain-dark': '#42583C',
 
-      '--fog': 'rgba(255, 220, 190, 0.28)',
+      '--fog': 'rgba(215, 225, 235, 0.28)',
 
-      '--light': '#FFD58A',
+      '--light': '#FFE8AC',
       '--text-primary': '#2F3034',
 
       '--card-bg': '#FAF6ED',
@@ -87,21 +87,21 @@ export const environmentStates = {
     id: 'sunset',
     start: 15,
     end: 17,
-    label: 'Sunset',
+    label: 'Sore',
     colors: {
-      '--sky-top': '#665C78',
-      '--sky-mid': '#B27B78',
-      '--sky-bottom': '#E6B27F',
+      '--sky-top': '#525571',
+      '--sky-mid': '#9A6D7A',
+      '--sky-bottom': '#D98A6C',
 
-      '--mountain-back': '#625A68',
-      '--mountain-front': '#45414F',
+      '--mountain-back': '#544D63',
+      '--mountain-front': '#3D364A',
 
-      '--terrain-base': '#756653',
-      '--terrain-dark': '#564A40',
+      '--terrain-base': '#4E6152',
+      '--terrain-dark': '#38483B',
 
-      '--fog': 'rgba(237, 194, 166, 0.25)',
+      '--fog': 'rgba(217, 138, 108, 0.15)',
 
-      '--light': '#FFD28C',
+      '--light': '#FFC88A',
       '--text-primary': '#302B31',
 
       '--card-bg': '#FAF3E6',

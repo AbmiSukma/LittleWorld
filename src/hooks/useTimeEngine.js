@@ -7,8 +7,12 @@ export const useTimeEngine = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const debugState = searchParams.get('debugState');
+    let manualOverride = null;
 
     const getState = () => {
+      if (manualOverride && environmentStates[manualOverride]) {
+        return environmentStates[manualOverride];
+      }
       if (debugState && environmentStates[debugState]) {
         return environmentStates[debugState];
       }
@@ -28,9 +32,19 @@ export const useTimeEngine = () => {
       Object.entries(s.colors).forEach(([k, v]) => root.style.setProperty(k, v));
     };
 
+    const handleOverride = (e) => {
+      manualOverride = e.detail;
+      apply();
+    };
+
+    window.addEventListener('timeOverride', handleOverride);
+
     apply();
     const interval = setInterval(apply, 60000);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('timeOverride', handleOverride);
+    };
   }, []);
 
   return timeState;

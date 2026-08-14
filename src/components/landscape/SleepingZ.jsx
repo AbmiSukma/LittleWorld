@@ -16,8 +16,8 @@ const SleepingZ = () => {
 
 const StyledWrapper = styled.div`
   position: absolute;
-  top: -20px;
-  right: -60px; /* Positioned to the top right of the AMEY text */
+  bottom: 0;
+  left: 0;
 
   .z {
     position: absolute;

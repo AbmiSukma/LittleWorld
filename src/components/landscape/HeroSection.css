@@ -1,7 +1,5 @@
 .hero-section {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100vw;
   height: 100vh;
   z-index: 1;
@@ -16,7 +14,7 @@
   --svg-m-mid-left: var(--mountain-front);
   --svg-m-mid-right: var(--mountain-front);
   --svg-m-mid-center: var(--mountain-front);
-  --svg-snow: var(--text-primary);
+  --svg-snow: #FFFFFF;
   --svg-hill-left: var(--terrain-base);
   --svg-hill-right: var(--terrain-base);
   --svg-ground: var(--terrain-dark);
@@ -36,38 +34,7 @@
   --svg-log-dark: #312121;
 }
 
-/* --- DYNAMIC LIGHTING / SHADOWS --- */
-.hero-section.fajar, .hero-section.sunrise {
-  --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 85%, white);
-  --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 85%, black);
-  --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 85%, white);
-  --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 85%, black);
-  --svg-hill-left: color-mix(in srgb, var(--terrain-base) 90%, white);
-  --svg-hill-right: color-mix(in srgb, var(--terrain-base) 90%, black);
-  --svg-tent-main: color-mix(in srgb, #9E8CB6 85%, white);
-  --svg-tent-shadow: color-mix(in srgb, #8C79A6 85%, black);
-}
-.hero-section.daylight {
-  --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 95%, white);
-  --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 95%, white);
-  --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 95%, white);
-  --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 95%, white);
-}
-.hero-section.sunset, .hero-section.evening {
-  --svg-m-back-left: color-mix(in srgb, var(--mountain-back) 85%, black);
-  --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 85%, white);
-  --svg-m-mid-left: color-mix(in srgb, var(--mountain-front) 85%, black);
-  --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 85%, white);
-  --svg-hill-left: color-mix(in srgb, var(--terrain-base) 90%, black);
-  --svg-hill-right: color-mix(in srgb, var(--terrain-base) 90%, white);
-  --svg-tent-main: color-mix(in srgb, #9E8CB6 85%, black); 
-  --svg-tent-shadow: color-mix(in srgb, #8C79A6 85%, white);
-}
-.hero-section.night {
-  --svg-m-back-right: color-mix(in srgb, var(--mountain-back) 95%, black);
-  --svg-m-mid-right: color-mix(in srgb, var(--mountain-front) 95%, black);
-  --svg-hill-right: color-mix(in srgb, var(--terrain-base) 95%, black);
-}
+
 
 .hero-section * {
   transition: fill 2s ease, stroke 2s ease;
@@ -111,7 +78,7 @@
 .hero-section.fajar .celestial-body,
 .hero-section.evening .celestial-body {
   background: transparent;
-  box-shadow: inset -12px 10px 0 0 var(--light);
+  box-shadow: inset 12px -4px 0 0 var(--light);
 }
 
 /* =========================================
@@ -138,47 +105,29 @@
   width: 100%; height: 100%;
   pointer-events: none;
 }
-.wind-line {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: wind-blow 6s linear infinite;
-}
-.wind-line.delay { animation-delay: 3s; }
-@keyframes wind-blow {
-  0% { stroke-dashoffset: 600; }
-  100% { stroke-dashoffset: -600; }
+.wind-swirl {
+  fill: none;
+  stroke: var(--fog);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0;
 }
 
-/* Fireplace */
-.campfire-container { position: relative; width: 100%; height: 100%; }
-.fire-glow {
-  position: absolute; bottom: -20px; left: -40px; width: 140px; height: 140px;
-  background: radial-gradient(circle, rgba(255, 140, 60, 0.2) 0%, transparent 70%);
-  border-radius: 50%; animation: flicker 2s infinite alternate;
-}
-.fire {
-  position: absolute; bottom: 10px; left: 20px; width: 20px; height: 20px;
-  background: #ff8c3c; transform: rotate(45deg); animation: fire-flicker 1.5s infinite alternate;
-}
-.fire-2 { background: #ffc857; bottom: 15px; left: 25px; width: 15px; height: 15px; animation-delay: 0.2s; }
-.fire-3 { background: #ffc857; bottom: 12px; left: 15px; width: 12px; height: 12px; animation-delay: 0.4s; }
-.smoke {
-  position: absolute; bottom: 25px; left: 20px; width: 12px; height: 12px;
-  background: rgba(200, 200, 200, 0.4); border-radius: 50%; filter: blur(4px);
-  animation: float-smoke 3s linear infinite; opacity: 0;
-}
-.smoke-1 { animation-delay: 0s; left: 25px; }
-.smoke-2 { animation-delay: 1s; left: 20px; width: 15px; height: 15px; }
-.smoke-3 { animation-delay: 2s; left: 30px; width: 10px; height: 10px; }
+.swirl-1 { stroke-dasharray: 150 1000; animation: blow 8s ease-out infinite; }
+.swirl-2 { stroke-dasharray: 80 1000; animation: blow 6s ease-in-out infinite 2s; }
+.swirl-3 { stroke-dasharray: 200 1500; animation: blow 10s ease-out infinite 1s; }
+.swirl-4 { stroke-dasharray: 100 1000; animation: blow 7s ease-in-out infinite 4s; }
+.swirl-5 { stroke-dasharray: 120 1000; animation: blow 9s ease-out infinite 3s; }
 
-@keyframes float-smoke {
-  0% { transform: translateY(0) scale(1); opacity: 0; }
-  20% { opacity: 0.8; }
-  100% { transform: translateY(-60px) scale(3); opacity: 0; }
+@keyframes blow {
+  0% { stroke-dashoffset: 1000; opacity: 0; }
+  15% { opacity: 0.6; }
+  40% { opacity: 0.4; }
+  75% { opacity: 0; }
+  100% { stroke-dashoffset: -200; opacity: 0; }
 }
-.hero-section.daylight .fire, .hero-section.daylight .fire-glow, .hero-section.daylight .smoke { display: none; }
-@keyframes flicker { 0% { opacity: 0.8; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
-@keyframes fire-flicker { 0% { transform: rotate(45deg) scale(0.9); } 100% { transform: rotate(45deg) scale(1.1) translateY(-5px); } }
+
+
 
 /* =========================================
    LAYER 3: FOREGROUND UI & TEXT
@@ -208,25 +157,156 @@
 
 .hero-title-container {
   text-align: center;
-  color: #efe8e8;
-  pointer-events: auto;
+  animation: fadeUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
+
 .hero-title {
   position: relative;
   display: inline-block;
-  font-size: 8rem;
+  font-size: clamp(4rem, 12vw, 8rem);
   line-height: 1;
   letter-spacing: 5px;
   margin: 0;
+  color: #FDFDF9; /* Crisp off-white */
+  text-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 12px 32px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .hero-subtitle {
-  font-size: 2rem;
+  font-size: clamp(1rem, 3vw, 2rem);
   letter-spacing: 8px;
   margin: 0;
+  color: #F5EFEB; /* Warmer off-white */
+  opacity: 0.9;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll Indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  color: var(--text-primary);
+  transition: color 1.5s ease;
+  animation: fadeUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.8s;
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.hero-scroll-indicator span {
+  font-family: 'Reddit Sans', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+.hero-scroll-indicator .mouse {
+  width: 24px;
+  height: 36px;
+  border: 2px solid var(--text-primary);
+  border-radius: 12px;
+  position: relative;
+  transition: border-color 1.5s ease;
+  opacity: 0.6;
+}
+
+.hero-scroll-indicator .wheel {
+  width: 4px;
+  height: 8px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s infinite;
+  transition: background-color 1.5s ease;
+}
+
+@keyframes scrollWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 12px); opacity: 0; }
 }
 
 @media (max-width: 768px) {
-  .hero-title { font-size: 4rem; }
-  .hero-subtitle { font-size: 0.875rem; }
   .hero-location-time { top: 1rem; right: 1rem; font-size: 0.875rem; }
+  .hero-scroll-indicator { bottom: 20px; }
+}
+
+/* =========================================================================
+   TENT HOVER UI
+   ========================================================================= */
+.tent-group {
+  cursor: pointer;
+  transform-origin: 600px 300px; /* Tent base anchor point */
+  pointer-events: all;
+}
+.tent-group:hover {
+  animation: tentWiggle 0.6s ease-in-out infinite alternate;
+}
+.tent-inside {
+  transition: fill 0.3s ease;
+}
+.tent-group:hover .tent-inside {
+  fill: #e6e897; /* Warm yellow light inside the tent */
+}
+
+@keyframes tentWiggle {
+  0% { transform: rotate(-2deg) scale(1.02); }
+  100% { transform: rotate(2deg) scale(1.02); }
+}
+
+/* We don't need hover state for visibility anymore, it's always visible */
+
+.tent-speech-bubble {
+  background: #fdf8eb;
+  color: #38262f; /* Fixed dark warm color so it doesn't clash during night time */
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: 'Reddit Sans', sans-serif;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  /* Always visible now */
+  opacity: 1;
+  display: inline-block;
+  width: max-content;
+  line-height: 1.4;
+  /* Add a gentle floating animation */
+  animation: floatBubble 3s ease-in-out infinite;
+}
+
+@keyframes floatBubble {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Speech bubble tail pointing DOWN-LEFT towards the tent */
+.tent-speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border-width: 12px 12px 0 0;
+  border-style: solid;
+  border-color: #fdf8eb transparent transparent transparent;
 }
