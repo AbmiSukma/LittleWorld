@@ -11,23 +11,23 @@ export const environmentStates = {
     end: 6,
     label: 'Fajar',
     colors: {
-      '--sky-top': '#182536',
-      '--sky-mid': '#344657',
-      '--sky-bottom': '#7A7C82',
+      '--sky-top': '#26324A',
+      '--sky-mid': '#58647A',
+      '--sky-bottom': '#C4A69A',
 
-      '--mountain-back': '#3A4A58',
-      '--mountain-front': '#253340',
+      '--mountain-back': '#5C6474',
+      '--mountain-front': '#3E4657',
 
-      '--terrain-base': '#56604E',
-      '--terrain-dark': '#394238',
+      '--terrain-base': '#66705F',
+      '--terrain-dark': '#4D554A',
 
-      '--fog': 'rgba(150, 155, 158, 0.22)',
+      '--fog': 'rgba(220, 210, 205, 0.24)',
 
-      '--light': '#D8E2E6',
-      '--text-primary': '#F4F1EA',
+      '--light': '#F4D6A3',
+      '--text-primary': '#F7F2EA',
 
-      '--card-bg': '#F3F0E9',
-      '--card-line': '#D9D4CB',
+      '--card-bg': '#F7F3EA',
+      '--card-line': '#DCD5CA',
     }
   },
 
@@ -37,23 +37,23 @@ export const environmentStates = {
     end: 11,
     label: 'Sunrise',
     colors: {
-      '--sky-top': '#8C6F78',
-      '--sky-mid': '#C58C78',
-      '--sky-bottom': '#E9B68A',
+      '--sky-top': '#B87870',
+      '--sky-mid': '#D79A79',
+      '--sky-bottom': '#F2C99B',
 
-      '--mountain-back': '#725D5A',
-      '--mountain-front': '#4A3D3A',
+      '--mountain-back': '#687080',
+      '--mountain-front': '#4B5362',
 
-      '--terrain-base': '#685349',
-      '--terrain-dark': '#453A36',
+      '--terrain-base': '#786A58',
+      '--terrain-dark': '#5B5146',
 
-      '--fog': 'rgba(245, 191, 153, 0.28)',
+      '--fog': 'rgba(255, 220, 190, 0.28)',
 
-      '--light': '#FFD79A',
-      '--text-primary': '#2D2726',
+      '--light': '#FFD58A',
+      '--text-primary': '#2F3034',
 
-      '--card-bg': '#F5F0E7',
-      '--card-line': '#DED5C8',
+      '--card-bg': '#FAF6ED',
+      '--card-line': '#DDD5C8',
     }
   },
 
@@ -61,25 +61,25 @@ export const environmentStates = {
     id: 'daylight',
     start: 12,
     end: 14,
-    label: 'Day Light',
+    label: 'Daylight',
     colors: {
-      '--sky-top': '#4F88B8',
-      '--sky-mid': '#73AFC0',
-      '--sky-bottom': '#B5D4C7',
+      '--sky-top': '#6FA9C0',
+      '--sky-mid': '#9CCBD5',
+      '--sky-bottom': '#D9E7D8',
 
-      '--mountain-back': '#628E91',
-      '--mountain-front': '#486F75',
+      '--mountain-back': '#66828A',
+      '--mountain-front': '#4B6870',
 
-      '--terrain-base': '#879B70',
-      '--terrain-dark': '#64795B',
+      '--terrain-base': '#687B5D',
+      '--terrain-dark': '#4E6249',
 
-      '--fog': 'rgba(190, 220, 213, 0.30)',
+      '--fog': 'rgba(235, 242, 229, 0.25)',
 
-      '--light': '#FFF0A8',
-      '--text-primary': '#263531',
+      '--light': '#FFF0B0',
+      '--text-primary': '#26332D',
 
-      '--card-bg': '#F5F1E8',
-      '--card-line': '#D8D8CF',
+      '--card-bg': '#F8F4EA',
+      '--card-line': '#D8D5CA',
     }
   },
 
@@ -89,23 +89,23 @@ export const environmentStates = {
     end: 17,
     label: 'Sunset',
     colors: {
-      '--sky-top': '#6C5A67',
-      '--sky-mid': '#A87567',
-      '--sky-bottom': '#D49A6C',
+      '--sky-top': '#665C78',
+      '--sky-mid': '#B27B78',
+      '--sky-bottom': '#E6B27F',
 
-      '--mountain-back': '#59606A',
-      '--mountain-front': '#3E4650',
+      '--mountain-back': '#625A68',
+      '--mountain-front': '#45414F',
 
-      '--terrain-base': '#76624F',
-      '--terrain-dark': '#51473E',
+      '--terrain-base': '#756653',
+      '--terrain-dark': '#564A40',
 
-      '--fog': 'rgba(220, 165, 125, 0.25)',
+      '--fog': 'rgba(237, 194, 166, 0.25)',
 
-      '--light': '#FFD18A',
-      '--text-primary': '#2B2929',
+      '--light': '#FFD28C',
+      '--text-primary': '#302B31',
 
-      '--card-bg': '#F4EFE5',
-      '--card-line': '#DCD3C5',
+      '--card-bg': '#FAF3E6',
+      '--card-line': '#DED3C3',
     }
   },
 
@@ -115,23 +115,23 @@ export const environmentStates = {
     end: 21,
     label: 'Evening',
     colors: {
-      '--sky-top': '#263445',
-      '--sky-mid': '#405363',
-      '--sky-bottom': '#68717A',
+      '--sky-top': '#293653',
+      '--sky-mid': '#52617A',
+      '--sky-bottom': '#8E8290',
 
-      '--mountain-back': '#354653',
-      '--mountain-front': '#25333F',
+      '--mountain-back': '#4D5668',
+      '--mountain-front': '#384152',
 
-      '--terrain-base': '#4E594E',
-      '--terrain-dark': '#343D37',
+      '--terrain-base': '#4F5B4C',
+      '--terrain-dark': '#394238',
 
-      '--fog': 'rgba(112, 126, 134, 0.22)',
+      '--fog': 'rgba(150, 156, 175, 0.22)',
 
-      '--light': '#C8D8D8',
-      '--text-primary': '#EAE8E2',
+      '--light': '#DCCFA8',
+      '--text-primary': '#F0ECE4',
 
-      '--card-bg': '#F1EEE7',
-      '--card-line': '#D7D3CC',
+      '--card-bg': '#F2EEE6',
+      '--card-line': '#D5D0C7',
     }
   },
 
@@ -141,30 +141,35 @@ export const environmentStates = {
     end: 4,
     label: 'Midnight Sleep',
     colors: {
-      '--sky-top': '#111B2B',
-      '--sky-mid': '#1D2B3C',
-      '--sky-bottom': '#344252',
+      // Tetap malam, tapi tidak pure black
+      '--sky-top': '#182235',
+      '--sky-mid': '#293951',
+      '--sky-bottom': '#45566A',
 
-      '--mountain-back': '#273746',
-      '--mountain-front': '#1D2B37',
+      // Gunung masih punya silhouette yang jelas
+      '--mountain-back': '#3E4C5E',
+      '--mountain-front': '#2E3A4A',
 
-      '--terrain-base': '#3F4D45',
-      '--terrain-dark': '#2D3833',
+      // Tanah tetap visible
+      '--terrain-base': '#3E4A40',
+      '--terrain-dark': '#2D3730',
 
-      '--fog': 'rgba(100, 117, 125, 0.20)',
+      // Sedikit moonlit atmosphere
+      '--fog': 'rgba(155, 175, 195, 0.18)',
 
-      '--light': '#D7E3E6',
-      '--text-primary': '#E8E9E4',
+      '--light': '#C8D8E8',
+      '--text-primary': '#F0F2EE',
 
-      '--card-bg': '#EDEAE3',
-      '--card-line': '#D5D1C9',
+      // Card tetap terang agar readable
+      '--card-bg': '#EEEAE1',
+      '--card-line': '#D2CEC5',
     }
   }
 };
 
 export const profile = {
   name: 'Abmi S. Edri',
-  nickname: 'Amey',
+  nickname: 'Abmi',
   title: 'UI/UX DESIGN LABS',
   email: 'abmisukma.e@gmail.com',
   bio: 'tinkerer pursuing quiet clarity with playfulness and curiosity. designing digital products, making games, building systems, and telling stories.',
