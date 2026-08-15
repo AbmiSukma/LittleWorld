@@ -15,8 +15,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 60px;
-  padding-left: 80px; /* Align with content, skipping sidebar width */
+  margin: 0 auto 60px auto;
+  max-width: 1000px;
 }
 
 .resume-breadcrumbs {

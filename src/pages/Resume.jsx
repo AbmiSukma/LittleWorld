@@ -54,11 +54,11 @@ const Resume = () => {
           onMouseEnter={() => setDownloadHovered(true)}
           onMouseLeave={() => setDownloadHovered(false)}
         >
-          <a href="/resume.pdf" download="resume.pdf" className="resume-download-btn" aria-label="download resume">
+          <button onClick={() => window.print()} className="resume-download-btn" aria-label="download resume">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
               <path d="M12 16l-5-5 1.4-1.4 2.6 2.6V4h2v8.2l2.6-2.6L17 11l-5 5zm-6 4v-2h12v2H6z"/>
             </svg>
-          </a>
+          </button>
           <AnimatePresence>
             {downloadHovered && (
               <motion.div
