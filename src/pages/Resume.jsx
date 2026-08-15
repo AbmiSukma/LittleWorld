@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Resume.css';
 
 const sections = [
@@ -11,6 +12,7 @@ const sections = [
 
 const Resume = () => {
   const [activeSection, setActiveSection] = useState('executive-summary');
+  const [downloadHovered, setDownloadHovered] = useState(false);
 
   useEffect(() => {
     // ScrollSpy implementation
@@ -40,10 +42,6 @@ const Resume = () => {
     }
   };
 
-  const handleDownload = () => {
-    window.print(); // Simple way to allow PDF saving/printing
-  };
-
   return (
     <div className="resume-page-wrapper">
       <div className="resume-top-bar">
@@ -51,14 +49,30 @@ const Resume = () => {
           <span className="active">RESUME</span>
           <span className="inactive">CV</span>
         </div>
-        <button className="resume-download-btn" onClick={handleDownload} aria-label="Unduh Dokumen">
-          <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          <span className="resume-download-text">Unduh Dokumen</span>
-        </button>
+        <div 
+          className="resume-download-container"
+          onMouseEnter={() => setDownloadHovered(true)}
+          onMouseLeave={() => setDownloadHovered(false)}
+        >
+          <a href="/resume.pdf" download="resume.pdf" className="resume-download-btn" aria-label="download resume">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M12 16l-5-5 1.4-1.4 2.6 2.6V4h2v8.2l2.6-2.6L17 11l-5 5zm-6 4v-2h12v2H6z"/>
+            </svg>
+          </a>
+          <AnimatePresence>
+            {downloadHovered && (
+              <motion.div
+                className="resume-download-tooltip"
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 4 }}
+                transition={{ duration: 0.15 }}
+              >
+                download resume
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
       <div className="resume-layout">
