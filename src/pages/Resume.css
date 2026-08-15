@@ -315,3 +315,53 @@
     text-align: left;
   }
 }
+
+/* --- Print Styles (For Save as PDF) --- */
+@media print {
+  @page {
+    margin: 1.5cm; /* Standard margins */
+  }
+
+  body {
+    background-color: #fff;
+    -webkit-print-color-adjust: exact; /* Preserve colors */
+    print-color-adjust: exact;
+  }
+
+  /* Hide unnecessary UI elements */
+  .global-nav,
+  .resume-sidebar,
+  .resume-top-bar {
+    display: none !important;
+  }
+
+  /* Reset layout constraints and padding */
+  .resume-page-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: auto;
+  }
+
+  .resume-layout {
+    display: block; /* Remove grid to take full width */
+    max-width: 100%;
+    margin: 0;
+    gap: 0;
+  }
+
+  .resume-content {
+    padding-bottom: 0;
+    gap: 24px;
+  }
+
+  /* Prevent awkward page breaks inside sections and experience items */
+  .resume-section {
+    page-break-inside: avoid;
+    margin-bottom: 24px;
+  }
+
+  .experience-item {
+    page-break-inside: avoid;
+    margin-bottom: 24px;
+  }
+}
