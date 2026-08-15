@@ -38,15 +38,20 @@
 .resume-download-btn {
   background-color: #f5f5f5;
   border: 1px solid #e0e0e0;
-  border-radius: 50%;
-  width: 48px;
+  border-radius: 24px;
+  padding: 0 20px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-family: 'Reddit Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
 }
 
 .resume-download-btn:hover {
