@@ -354,14 +354,20 @@
     gap: 24px;
   }
 
-  /* Prevent awkward page breaks inside sections and experience items */
+  /* Manage Page Breaks */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
   .resume-section {
-    page-break-inside: avoid;
+    /* Do NOT use page-break-inside: avoid here, otherwise large sections will force a massive gap */
     margin-bottom: 24px;
   }
 
   .experience-item {
     page-break-inside: avoid;
+    break-inside: avoid;
     margin-bottom: 24px;
   }
 }
