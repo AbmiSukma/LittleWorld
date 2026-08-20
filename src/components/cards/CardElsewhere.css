@@ -172,74 +172,182 @@
 }
 
 .social-loyalty-card__stamp {
-  border: none;
-  cursor: pointer;
-  color: var(--home-loyalty-ink);
-  transition: transform 0.2s ease;
+  --loyalty-stamp-rotation: -2deg;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, color 0.16s ease;
 }
 
-.social-loyalty-card__stamp:hover {
-  transform: scale(1.1) rotate(5deg);
+.social-loyalty-card__stamp[data-collected="true"] {
+  --loyalty-stamp-ink: #a33a2c;
+  color: rgb(163, 58, 44);
+}
+
+.social-loyalty-card__stamp--linkedin {
+  --loyalty-stamp-icon-rotation: -8deg;
+}
+
+.social-loyalty-card__stamp--instagram {
+  --loyalty-stamp-icon-rotation: 7deg;
+}
+
+.social-loyalty-card__stamp--github {
+  --loyalty-stamp-icon-rotation: -4deg;
+}
+
+.social-loyalty-card__stamp--instagram {
+  --loyalty-stamp-rotation: 2deg;
+}
+
+.social-loyalty-card__stamp--github {
+  --loyalty-stamp-rotation: -1deg;
 }
 
 .social-loyalty-card__stamp-mark {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
+  position: absolute;
+  inset: 6%;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  color: var(--loyalty-stamp-ink);
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  transform: rotate(var(--loyalty-stamp-rotation));
+  transform-origin: center center;
+  transition: color 0.16s ease, filter 0.16s ease, opacity 0.16s ease, transform 0.16s ease;
+}
+
+.social-loyalty-card__stamp-mark::before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  border: clamp(0.16rem, 0.75vw, 0.24rem) solid;
+  border-radius: 50%;
+  clip-path: polygon(1% 5%, 17% 0%, 33% 3%, 50% 0%, 68% 4%, 84% 1%, 98% 7%, 100% 24%, 97% 42%, 100% 58%, 96% 75%, 100% 93%, 82% 100%, 65% 96%, 48% 100%, 31% 97%, 14% 100%, 0% 91%, 3% 73%, 0% 56%, 4% 38%, 0% 20%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.social-loyalty-card__stamp-mark::after {
+  content: "";
+  position: absolute;
+  inset: 21%;
+  border: clamp(0.08rem, 0.35vw, 0.12rem) solid;
+  border-radius: 50%;
+  opacity: 0.82;
+  pointer-events: none;
+}
+
+.social-loyalty-card__stamp:hover, .social-loyalty-card__stamp:focus-visible {
+  border-color: var(--loyalty-stamp-ink);
+  box-shadow: 0 1px color-mix(in srgb,white 62%,transparent),inset 0 0 0 1px color-mix(in srgb,white 58%,transparent),0 0 0 .12rem color-mix(in srgb,var(--loyalty-stamp-ink) 12%,transparent);
+}
+
+.social-loyalty-card__stamp:hover .social-loyalty-card__stamp-mark, .social-loyalty-card__stamp:focus-visible .social-loyalty-card__stamp-mark {
+  opacity: 0.98;
+  transform: rotate(0deg) scale(1.04);
+}
+
+.social-loyalty-card__stamp[data-collected="true"] .social-loyalty-card__stamp-mark {
+  opacity: 0.98;
+  filter: drop-shadow(color-mix(in srgb, rgb(109, 28, 20) 44%, transparent) 0px 0.03rem 0px) drop-shadow(color-mix(in srgb, rgb(109, 28, 20) 20%, transparent) 0px 0.14rem 0.24rem);
+}
+
+.social-loyalty-card__stamp:focus-visible {
+  outline: 2px solid color-mix(in srgb,var(--loyalty-stamp-ink) 70%,transparent);
+  outline-offset: 0.18rem;
 }
 
 .social-loyalty-card__stamp-ring {
   position: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
   width: 100%;
   height: 100%;
-  border: 2px solid var(--home-loyalty-ink);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.social-loyalty-card__stamp-ring::after {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border: 1px solid var(--home-loyalty-ink);
-  border-radius: 50%;
-  opacity: 0.5;
 }
 
 .social-loyalty-card__stamp-ring-text {
   position: absolute;
-  inset: -2px; /* Slightly larger than ring */
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  fill: var(--home-loyalty-ink);
-  font-family: 'Reddit Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-family-sans-bold);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  overflow: hidden;
   text-transform: uppercase;
   pointer-events: none;
 }
 
+.social-loyalty-card__stamp-ring-text text {
+  fill: currentcolor;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.social-loyalty-card__stamp-ring-text path {
+  fill: transparent;
+}
+
+.social-loyalty-card__stamp-ring-text--top {
+  transform: rotate(-3deg);
+}
+
+.social-loyalty-card__stamp-ring-text--bottom {
+  transform: rotate(3deg);
+}
+
 .social-loyalty-card__stamp-center {
   position: relative;
-  z-index: 2;
-  width: 40%;
-  height: 40%;
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  color: currentcolor;
+}
+
+.social-loyalty-card__stamp-center::before, .social-loyalty-card__stamp-center::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 130%;
+  height: 0px;
+  background: currentcolor;
+  opacity: 0.72;
+  transform: translate(-50%);
+}
+
+.social-loyalty-card__stamp-center::before {
+  top: -0.38rem;
+}
+
+.social-loyalty-card__stamp-center::after {
+  bottom: -0.38rem;
 }
 
 .social-loyalty-card__icon {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  transform: rotate(var(--loyalty-stamp-icon-rotation));
+  transform-origin: center center;
+}
+
+.social-loyalty-card__icon svg {
+  display: block;
   width: 100%;
   height: 100%;
-  fill: var(--home-loyalty-ink);
+  fill: currentcolor;
 }
+
+
 
 /* Footer text */
 .social-loyalty-card__copy {
@@ -256,7 +364,6 @@
   color: var(--home-loyalty-ink);
   transform: rotate(90deg) translateY(-100%);
   transform-origin: top left;
-  /* margin-top removed to rely on space-between */
 }
 
 .social-loyalty-card__title {
@@ -283,11 +390,4 @@
   color: var(--home-loyalty-ink);
   margin: 0;
 }
-
-/* Different rotations for stamps to look organic */
-.social-loyalty-card__stamp--linkedin .social-loyalty-card__stamp-mark { transform: rotate(-5deg); }
-.social-loyalty-card__stamp--instagram .social-loyalty-card__stamp-mark { transform: rotate(8deg); }
-.social-loyalty-card__stamp--github .social-loyalty-card__stamp-mark { transform: rotate(-3deg); }
-.social-loyalty-card__stamp--itch .social-loyalty-card__stamp-mark { transform: rotate(12deg); }
-
 

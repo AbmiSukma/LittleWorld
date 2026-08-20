@@ -1,46 +1,39 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 // You can replace these URLs with your actual local audio files in the future
 // e.g., const WIND_SRC = '/assets/audio/wind.mp3';
 const AUDIO_SOURCES = {
   wind: 'https://actions.google.com/sounds/v1/weather/wind_blowing_through_trees.ogg',
   crickets: 'https://actions.google.com/sounds/v1/insects/crickets.ogg',
-  snoring: 'https://actions.google.com/sounds/v1/human_voices/snoring_heavy.ogg',
-  lofi: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' // Placeholder Lofi Track
+  snoring: 'https://actions.google.com/sounds/v1/human_voices/snoring_heavy.ogg'
 };
 
 export const useAudioEngine = (timeState, isInsideTent, hasInteracted) => {
-  const [isRadioPlaying, setIsRadioPlaying] = useState(true); // Defaults to true so it auto-plays on enter
-  
   // Audio Refs
   const audioRefs = useRef({
     wind: new Audio(AUDIO_SOURCES.wind),
     crickets: new Audio(AUDIO_SOURCES.crickets),
-    snoring: new Audio(AUDIO_SOURCES.snoring),
-    lofi: new Audio(AUDIO_SOURCES.lofi),
+    snoring: new Audio(AUDIO_SOURCES.snoring)
   });
 
   // Initialize loop and volume for audio objects
   useEffect(() => {
-    const { wind, crickets, snoring, lofi } = audioRefs.current;
+    const { wind, crickets, snoring } = audioRefs.current;
     
     wind.loop = true;
     crickets.loop = true;
     snoring.loop = true;
-    lofi.loop = true;
 
     // Default volumes
     wind.volume = 0;
     crickets.volume = 0;
     snoring.volume = 0;
-    lofi.volume = 0;
 
     return () => {
       // Cleanup on unmount
       wind.pause();
       crickets.pause();
       snoring.pause();
-      lofi.pause();
     };
   }, []);
 
@@ -48,7 +41,7 @@ export const useAudioEngine = (timeState, isInsideTent, hasInteracted) => {
   useEffect(() => {
     if (!hasInteracted) return; // Browser autoplay protection
 
-    const { wind, crickets, snoring, lofi } = audioRefs.current;
+    const { wind, crickets, snoring } = audioRefs.current;
     const timeId = timeState.id;
 
     // Helper to safely play audio
@@ -86,23 +79,7 @@ export const useAudioEngine = (timeState, isInsideTent, hasInteracted) => {
       setTimeout(() => { if (snoring.volume === 0) snoring.pause() }, 1000);
     }
 
-    // 4. LOFI RADIO (Playing only inside tent AND if radio is turned on)
-    if (isInsideTent && isRadioPlaying) {
-      safePlay(lofi);
-      fadeVolume(lofi, 0.6); // Main focus
-    } else {
-      fadeVolume(lofi, 0);
-      setTimeout(() => { if (lofi.volume === 0) lofi.pause() }, 1000);
-    }
+  }, [timeState, isInsideTent, hasInteracted]);
 
-  }, [timeState, isInsideTent, hasInteracted, isRadioPlaying]);
-
-  const toggleRadio = () => {
-    setIsRadioPlaying(prev => !prev);
-  };
-
-  return {
-    isRadioPlaying,
-    toggleRadio
-  };
+  return {};
 };

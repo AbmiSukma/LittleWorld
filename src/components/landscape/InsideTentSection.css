@@ -31,24 +31,6 @@
   100% { opacity: 0.8; transform: scale(1.15); transform-origin: 145px 330px; }
 }
 
-.coffee-steam path {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.5);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  animation: steamRise 3s ease-in-out infinite;
-}
-.coffee-steam path:nth-child(2) {
-  animation-delay: 1.5s;
-}
-
-@keyframes steamRise {
-  0% { transform: translateY(0) scaleX(1) rotate(0deg); opacity: 0; }
-  20% { opacity: 0.8; }
-  50% { transform: translateY(-25px) scaleX(1.15) rotate(4deg); opacity: 0.8; }
-  100% { transform: translateY(-50px) scaleX(1.3) rotate(-4deg); opacity: 0; }
-}
-
 /* Scrolling Content */
 .scrolling-content {
   position: relative;

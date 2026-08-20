@@ -100,7 +100,7 @@ const CardElsewhere = ({ socials, delay = 0 }) => {
                   </div>
                   
                   <div className="social-loyalty-card__copy">
-                    <h2 className="social-loyalty-card__title">else —where</h2>
+                    <h2 className="social-loyalty-card__title">else—where</h2>
                     <p className="social-loyalty-card__fine-print">Visit link to collect stamps.</p>
                   </div>
                   

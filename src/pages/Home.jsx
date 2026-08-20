@@ -23,7 +23,7 @@ const Home = () => {
     };
   }, []);
 
-  const { isRadioPlaying, toggleRadio } = useAudioEngine(timeState, isInsideTent, hasInteracted);
+  useAudioEngine(timeState, isInsideTent, hasInteracted);
 
   // Temporary function to force change the URL for testing
   const setDebugTime = (stateName) => {
@@ -58,8 +58,6 @@ const Home = () => {
           >
             <InsideTentSection 
               onExitTent={() => setIsInsideTent(false)} 
-              isRadioPlaying={isRadioPlaying}
-              toggleRadio={toggleRadio}
             />
           </motion.div>
         )}

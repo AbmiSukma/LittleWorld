@@ -3,12 +3,11 @@ import CardProfile from '../cards/CardProfile';
 import CardJob from '../cards/CardJob';
 import CardNotebook from '../cards/CardNotebook';
 import CardElsewhere from '../cards/CardElsewhere';
-import Radio from './Radio';
 import tentInsideImg from '../../assets/tent-inside.jpg';
 import { profile, workCards, academicCard, socials } from '../../data/content';
 import './InsideTentSection.css';
 
-const InsideTentSection = ({ onExitTent, isRadioPlaying, toggleRadio }) => {
+const InsideTentSection = ({ onExitTent }) => {
   const [timeStr, setTimeStr] = useState('');
 
   useEffect(() => {
@@ -35,9 +34,6 @@ const InsideTentSection = ({ onExitTent, isRadioPlaying, toggleRadio }) => {
         <span className="time-text">{timeStr}</span>
       </div>
 
-      {/* Radio Component */}
-      <Radio isPlaying={isRadioPlaying} onToggle={toggleRadio} />
-
       {/* Back Button */}
       <button className="exit-tent-btn" onClick={onExitTent}>
         &larr; Keluar Tenda
@@ -59,12 +55,6 @@ const InsideTentSection = ({ onExitTent, isRadioPlaying, toggleRadio }) => {
           
           {/* Lantern Glow (breathing) */}
           <circle cx="145" cy="330" r="120" fill="url(#glowGradient)" className="lantern-glow" />
-
-          {/* Coffee Steam */}
-          <g className="coffee-steam" transform="translate(245, 335)">
-            <path d="M0 0 C -15 -15, 15 -25, 0 -40 C -15 -55, 15 -65, 0 -80" />
-            <path d="M15 5 C 0 -10, 30 -20, 15 -35 C 0 -50, 30 -60, 15 -75" />
-          </g>
         </svg>
       </div>
 
