@@ -1,318 +1,189 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Work = () => {
+  const projects = [
+    {
+      title: "MajorPath",
+      badges: ["Bachelor's Thesis", "UX Research"],
+      desc: "Platform pendukung keputusan dengan skor SUS 72 melalui riset end-to-end.",
+      link: "/work/majorpath"
+    },
+    {
+      title: "Dashboard TIF",
+      badges: ["Internship", "UI/UX Design"],
+      desc: "Perancangan sistem administrasi akademik yang kompleks bersama tim.",
+      link: "/work/dashboard-tif"
+    },
+    {
+      title: "Website HIMATIF",
+      badges: ["Organization", "Front-End"],
+      desc: "Perancangan visual modern dan implementasi kode front-end.",
+      link: "/work/website-himatif"
+    }
+  ];
+
   return (
     <PageContainer>
-      <StyledWrapper>
-        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" className="wheel-and-hamster">
-          <div className="wheel" />
-          <div className="hamster">
-            <div className="hamster__body">
-              <div className="hamster__head">
-                <div className="hamster__ear" />
-                <div className="hamster__eye" />
-                <div className="hamster__nose" />
-              </div>
-              <div className="hamster__limb hamster__limb--fr" />
-              <div className="hamster__limb hamster__limb--fl" />
-              <div className="hamster__limb hamster__limb--br" />
-              <div className="hamster__limb hamster__limb--bl" />
-              <div className="hamster__tail" />
-            </div>
-          </div>
-          <div className="spoke" />
-        </div>
-      </StyledWrapper>
+      <PageHeader>
+        <Title>Selected Works</Title>
+        <Subtitle>A collection of my recent projects and case studies.</Subtitle>
+      </PageHeader>
+      
+      <ProjectsGrid>
+        {projects.map((item, index) => (
+          <ProjectCard key={index}>
+            <ImagePlaceholder />
+            <CardContent>
+              <BadgesWrapper>
+                {item.badges.map((badge, i) => (
+                  <Badge key={i}>{badge}</Badge>
+                ))}
+              </BadgesWrapper>
+              
+              <ProjectTitle>{item.title}</ProjectTitle>
+              <ProjectDesc>{item.desc}</ProjectDesc>
+              
+              <ProjectLink to={item.link}>
+                Read Case Study
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </ProjectLink>
+            </CardContent>
+          </ProjectCard>
+        ))}
+      </ProjectsGrid>
     </PageContainer>
   );
 }
 
+// STYLES
 const PageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 24px;
   min-height: 100vh;
-  width: 100vw;
-  background-color: #e8e8e8;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
 `;
 
-const StyledWrapper = styled.div`
-  .wheel-and-hamster {
-    --dur: 1s;
-    position: relative;
-    width: 12em;
-    height: 12em;
-    font-size: 14px;
+const PageHeader = styled.div`
+  margin-bottom: 3rem;
+`;
+
+const Title = styled.h1`
+  font-family: var(--font-heading, sans-serif);
+  font-size: 3.5rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+`;
+
+const Subtitle = styled.p`
+  font-family: var(--font-body, sans-serif);
+  font-size: 1.125rem;
+  color: #64748b;
+`;
+
+const ProjectsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+`;
+
+const ProjectCard = styled.article`
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.1);
+  }
+`;
+
+const ImagePlaceholder = styled.div`
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #f1f5f9;
+`;
+
+const CardContent = styled.div`
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
+const BadgesWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+`;
+
+const Badge = styled.span`
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+`;
+
+const ProjectTitle = styled.h3`
+  font-family: var(--font-heading, sans-serif);
+  font-size: 1.75rem;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+`;
+
+const ProjectDesc = styled.p`
+  font-family: var(--font-body, sans-serif);
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+`;
+
+const ProjectLink = styled(Link)`
+  font-family: var(--font-body, sans-serif);
+  color: #0f172a;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
   }
 
-  .wheel,
-  .hamster,
-  .hamster div,
-  .spoke {
-    position: absolute;
+  svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
   }
 
-  .wheel,
-  .spoke {
-    border-radius: 50%;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .wheel {
-    background: radial-gradient(100% 100% at center,hsla(0,0%,60%,0) 47.8%,hsl(0,0%,60%) 48%);
-    z-index: 2;
-  }
-
-  .hamster {
-    animation: hamster var(--dur) ease-in-out infinite;
-    top: 50%;
-    left: calc(50% - 3.5em);
-    width: 7em;
-    height: 3.75em;
-    transform: rotate(4deg) translate(-0.8em,1.85em);
-    transform-origin: 50% 0;
-    z-index: 1;
-  }
-
-  .hamster__head {
-    animation: hamsterHead var(--dur) ease-in-out infinite;
-    background: hsl(30,90%,55%);
-    border-radius: 70% 30% 0 100% / 40% 25% 25% 60%;
-    box-shadow: 0 -0.25em 0 hsl(30,90%,80%) inset,
-  		0.75em -1.55em 0 hsl(30,90%,90%) inset;
-    top: 0;
-    left: -2em;
-    width: 2.75em;
-    height: 2.5em;
-    transform-origin: 100% 50%;
-  }
-
-  .hamster__ear {
-    animation: hamsterEar var(--dur) ease-in-out infinite;
-    background: hsl(0,90%,85%);
-    border-radius: 50%;
-    box-shadow: -0.25em 0 hsl(30,90%,55%) inset;
-    top: -0.25em;
-    right: -0.25em;
-    width: 0.75em;
-    height: 0.75em;
-    transform-origin: 50% 75%;
-  }
-
-  .hamster__eye {
-    animation: hamsterEye var(--dur) linear infinite;
-    background-color: hsl(0,0%,0%);
-    border-radius: 50%;
-    top: 0.375em;
-    left: 1.25em;
-    width: 0.5em;
-    height: 0.5em;
-  }
-
-  .hamster__nose {
-    background: hsl(0,90%,75%);
-    border-radius: 35% 65% 85% 15% / 70% 50% 50% 30%;
-    top: 0.75em;
-    left: 0;
-    width: 0.2em;
-    height: 0.25em;
-  }
-
-  .hamster__body {
-    animation: hamsterBody var(--dur) ease-in-out infinite;
-    background: hsl(30,90%,90%);
-    border-radius: 50% 30% 50% 30% / 15% 60% 40% 40%;
-    box-shadow: 0.1em 0.75em 0 hsl(30,90%,55%) inset,
-  		0.15em -0.5em 0 hsl(30,90%,80%) inset;
-    top: 0.25em;
-    left: 2em;
-    width: 4.5em;
-    height: 3em;
-    transform-origin: 17% 50%;
-    transform-style: preserve-3d;
-  }
-
-  .hamster__limb--fr,
-  .hamster__limb--fl {
-    clip-path: polygon(0 0,100% 0,70% 80%,60% 100%,0% 100%,40% 80%);
-    top: 2em;
-    left: 0.5em;
-    width: 1em;
-    height: 1.5em;
-    transform-origin: 50% 0;
-  }
-
-  .hamster__limb--fr {
-    animation: hamsterFRLimb var(--dur) linear infinite;
-    background: linear-gradient(hsl(30,90%,80%) 80%,hsl(0,90%,75%) 80%);
-    transform: rotate(15deg) translateZ(-1px);
-  }
-
-  .hamster__limb--fl {
-    animation: hamsterFLLimb var(--dur) linear infinite;
-    background: linear-gradient(hsl(30,90%,90%) 80%,hsl(0,90%,85%) 80%);
-    transform: rotate(15deg);
-  }
-
-  .hamster__limb--br,
-  .hamster__limb--bl {
-    border-radius: 0.75em 0.75em 0 0;
-    clip-path: polygon(0 0,100% 0,100% 30%,70% 90%,70% 100%,30% 100%,40% 90%,0% 30%);
-    top: 1em;
-    left: 2.8em;
-    width: 1.5em;
-    height: 2.5em;
-    transform-origin: 50% 30%;
-  }
-
-  .hamster__limb--br {
-    animation: hamsterBRLimb var(--dur) linear infinite;
-    background: linear-gradient(hsl(30,90%,80%) 90%,hsl(0,90%,75%) 90%);
-    transform: rotate(-25deg) translateZ(-1px);
-  }
-
-  .hamster__limb--bl {
-    animation: hamsterBLLimb var(--dur) linear infinite;
-    background: linear-gradient(hsl(30,90%,90%) 90%,hsl(0,90%,85%) 90%);
-    transform: rotate(-25deg);
-  }
-
-  .hamster__tail {
-    animation: hamsterTail var(--dur) linear infinite;
-    background: hsl(0,90%,85%);
-    border-radius: 0.25em 50% 50% 0.25em;
-    box-shadow: 0 -0.2em 0 hsl(0,90%,75%) inset;
-    top: 1.5em;
-    right: -0.5em;
-    width: 1em;
-    height: 0.5em;
-    transform: rotate(30deg) translateZ(-1px);
-    transform-origin: 0.25em 0.25em;
-  }
-
-  .spoke {
-    animation: spoke var(--dur) linear infinite;
-    background: radial-gradient(100% 100% at center,hsl(0,0%,60%) 4.8%,hsla(0,0%,60%,0) 5%),
-  		linear-gradient(hsla(0,0%,55%,0) 46.9%,hsl(0,0%,65%) 47% 52.9%,hsla(0,0%,65%,0) 53%) 50% 50% / 99% 99% no-repeat;
-  }
-
-  /* Animations */
-  @keyframes hamster {
-    from, to {
-      transform: rotate(4deg) translate(-0.8em,1.85em);
-    }
-
-    50% {
-      transform: rotate(0) translate(-0.8em,1.85em);
-    }
-  }
-
-  @keyframes hamsterHead {
-    from, 25%, 50%, 75%, to {
-      transform: rotate(0);
-    }
-
-    12.5%, 37.5%, 62.5%, 87.5% {
-      transform: rotate(8deg);
-    }
-  }
-
-  @keyframes hamsterEye {
-    from, 90%, to {
-      transform: scaleY(1);
-    }
-
-    95% {
-      transform: scaleY(0);
-    }
-  }
-
-  @keyframes hamsterEar {
-    from, 25%, 50%, 75%, to {
-      transform: rotate(0);
-    }
-
-    12.5%, 37.5%, 62.5%, 87.5% {
-      transform: rotate(12deg);
-    }
-  }
-
-  @keyframes hamsterBody {
-    from, 25%, 50%, 75%, to {
-      transform: rotate(0);
-    }
-
-    12.5%, 37.5%, 62.5%, 87.5% {
-      transform: rotate(-2deg);
-    }
-  }
-
-  @keyframes hamsterFRLimb {
-    from, 25%, 50%, 75%, to {
-      transform: rotate(50deg) translateZ(-1px);
-    }
-
-    12.5%, 37.5%, 62.5%, 87.5% {
-      transform: rotate(-30deg) translateZ(-1px);
-    }
-  }
-
-  @keyframes hamsterFLLimb {
-    from, 25%, 50%, 75%, to {
-      transform: rotate(-30deg);
-    }
-
-    12.5%, 37.5%, 62.5%, 87.5% {
-      transform: rotate(50deg);
-    }
-  }
-
-  @keyframes hamsterBRLimb {
-    from, 25%, 50%, 75%, to {
-      transform: rotate(-60deg) translateZ(-1px);
-    }
-
-    12.5%, 37.5%, 62.5%, 87.5% {
-      transform: rotate(20deg) translateZ(-1px);
-    }
-  }
-
-  @keyframes hamsterBLLimb {
-    from, 25%, 50%, 75%, to {
-      transform: rotate(20deg);
-    }
-
-    12.5%, 37.5%, 62.5%, 87.5% {
-      transform: rotate(-60deg);
-    }
-  }
-
-  @keyframes hamsterTail {
-    from, 25%, 50%, 75%, to {
-      transform: rotate(30deg) translateZ(-1px);
-    }
-
-    12.5%, 37.5%, 62.5%, 87.5% {
-      transform: rotate(10deg) translateZ(-1px);
-    }
-  }
-
-  @keyframes spoke {
-    from {
-      transform: rotate(0);
-    }
-
-    to {
-      transform: rotate(-1turn);
-    }
+  &:hover svg {
+    transform: translateX(4px);
   }
 `;
 
